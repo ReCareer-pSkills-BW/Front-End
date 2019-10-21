@@ -10,7 +10,7 @@ export const LOAD_FAILURE ='LOAD_FAILURE';
 export const fetchData = () => (dispatch) => {
     dispatch({type: LOAD_DATA })
     axios
-    .get('https://date.nager.at/api/v2/PublicHolidays/2017/AT')
-        .then(res => dispatch({ type: LOAD_SUCCESS, payload: res.data}))
+    .get('https://rickandmortyapi.com/api/location')
+        .then(res => dispatch({ type: LOAD_SUCCESS, payload: res.data.results}))
         .catch(err => dispatch({ type: LOAD_FAILURE, payload: err.response}))
 }

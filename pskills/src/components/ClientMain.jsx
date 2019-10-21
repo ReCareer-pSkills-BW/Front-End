@@ -1,15 +1,34 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import {fetchData} from '../actions/index';
 import '../App.css'
 
-const ClientMain = (props) => {
+const initialLocation = {
+    id: '',
+    name: '',
+    type: '',
+    residents: [],
+  };
+
+  
+
+const ClientMain = (props) => {  
+    const [location, setLocation] = useState(initialLocation)
+
+    const thisId = props.match.params.provider - 1
 
     useEffect (() => {
         props.fetchData();
-        console.log(props.jobData)
+        setLocation(props.jobData[thisId]);
+        const thisLocation = props.jobData.find(
+            location => `${location}` === props.jobData[thisId]
+        );
+        if (thisLocation) setLocation(thisLocation);
     }, [])
-
+    
+    console.log(props.jobData[thisId])
+  
+    console.log(props.match.params.provider)
 
     if(props.loading) {
         
@@ -22,16 +41,14 @@ const ClientMain = (props) => {
                 <div className="main-display">
                     
                     {props.error && <p>{props.error}</p>}
-                    {props.jobData.map(data => (
                         <>
                             <div className='card'>
-                                <p>{data.date}</p>
-                                <p>{data.localName}</p>
-                                <p>{data.name}</p>
+                                <p>{location.name}</p>
+                                <p>{location.type}</p>
+                                <p>{location.dimension}</p>
                             </div>
                         </>
 
-            ))}
 
                 </div>
                 </>
