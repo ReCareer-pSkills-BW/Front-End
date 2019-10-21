@@ -10,6 +10,7 @@ align-items: center;
 margin: 1%;
 color: maroon;
 text-align: center;
+background: teal;
 `
 
 export default function ClientCard(props) {

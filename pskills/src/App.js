@@ -13,7 +13,6 @@ function App() {
       <Route path ="/home" component={LandingPage} />
       <Route path = '/people' component = {ClientMain} />
       <Route path = '/individual' component = {ClientIndividual}/>
-      <ClientMain />
     </div>
   );
 }
