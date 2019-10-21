@@ -1,0 +1,10 @@
+.main-display {
+    display:flex;
+    flex-wrap:wrap;
+    margin:3%;
+    justify-content:space-evenly;
+}
+
+.card {
+    margin: 0 3%;
+}

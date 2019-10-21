@@ -22,7 +22,7 @@ const reducer = (state=initialState, action) => {
                 ...state,
                 loading: false,
                 error: '',
-                carbonData: action.payload
+                jobData: action.payload
             }
         case LOAD_FAILURE:
             return {
