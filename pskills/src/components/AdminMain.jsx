@@ -1,33 +1,64 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import {fetchData} from '../actions/index';
+import '../App.css'
 
-const AdminMain = (props) => {
+const initialLocation = {
+    id: '',
+    name: '',
+    type: '',
+    residents: [],
+  };
+
+  
+
+const AdminMain = (props) => {  
+    const [location, setLocation] = useState(initialLocation)
+
+    const thisId = props.match.params.provider - 1
 
     useEffect (() => {
         props.fetchData();
-    }, [props])
+        setLocation(props.jobData[thisId]);
+        const thisLocation = props.jobData.find(
+            location => `${location}` === props.jobData[thisId]
+        );
+        if (thisLocation) setLocation(thisLocation);
+    }, [])
+    
+    console.log(props.jobData[thisId])
+  
+    console.log(location)
 
-    console.log(props.jobData)
-
-    console.log(props)
     if(props.loading) {
         
         return <h3>Loading Data...</h3>
     }
     
         return (
-            <div className="main-display">
-                {props.error && <p>{props.error}</p>}
+            <>
+                <h1>Data</h1>
+                <div className="main-display">
+                    
+                    {props.error && <p>{props.error}</p>}
+                        <>
+                            <div className='card'>
+                                <p>{location.name}</p>
+                                <p>{location.type}</p>
+                                <p>{location.dimension}</p>
+                            </div>
+                        </>
 
-            </div>
+
+                </div>
+                </>
         );
 }
 
 // React 2 stuff, feel free to check it out
 
 const mapStateToProps = (state) => {
-    console.log(state)
+    console.log(state.jobData)
     return {
         jobData: state.jobData,
         loading: state.loading,
