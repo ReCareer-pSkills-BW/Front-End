@@ -1,11 +1,13 @@
 import React from 'react';
 import AdminLogin from './components/AdminLogin'
+import PrisonList from './components/PrisonList'
+import { Route } from 'react-router-dom'
 
 function App() {
   return (
     <div className="App">
-      <h2>Admin Login</h2>
-      <AdminLogin/>
+      <Route exact path ='/' component={AdminLogin}/> 
+      <Route path ='/prison-list' component ={PrisonList}/> 
     </div>
   );
 }

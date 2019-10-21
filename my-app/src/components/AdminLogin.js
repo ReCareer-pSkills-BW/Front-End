@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import axios from 'axios'
+import {NavLink} from 'react-router-dom'
 
 
 function AdminLogin() {
@@ -8,22 +8,27 @@ const [adminForm, setAdminForm] =useState({
     passWord: ''
 
 })
- const onInputChange = e => 
+ 
+
+const onInputChange = e => 
    setAdminForm({...adminForm, [e.target.name]: e.target.value});
    
   
  
 
 return(
+    <div>
+    <h2>AdminLogin</h2>
     <form>
         <label>Enter Username: </label>
-        <input name="username" type="text" name="userName" onChange={onInputChange}/> 
+        <input type="text" name="userName" onChange={onInputChange}/> 
         <br/>
         <label>Enter Password: </label>
         <input name ="passWord" type="password" onChange={onInputChange}/> 
         <br/>
-        <button>Login</button>
+        <NavLink to ='/prison-list'>Login</NavLink>
     </form>
+    </div>
  )
 
 }
