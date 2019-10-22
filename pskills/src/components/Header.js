@@ -28,10 +28,10 @@ export default function Header() {
     <>
       <Head>
         <Pic src={require('./ReCareerlogo.png')} />
-        <NavLink to={'/home'}><Nav>Home</Nav></NavLink>
-        <NavLink to={'/admin'}><Nav>Login</Nav></NavLink>
-        <NavLink to={'/people'}><Nav>View Canidates</Nav></NavLink>
-        <NavLink to={'/individual'}><Nav>individual</Nav></NavLink>
+        <NavLink to={'/'}><Nav>Home</Nav></NavLink>
+        <NavLink to={'/admin-login'}><Nav>Login</Nav></NavLink>
+        <NavLink to={'/client-providers'}><Nav>View Providers</Nav></NavLink>
+        {/* <NavLink to={'/individual'}><Nav>individual</Nav></NavLink> */}
       </Head>
     </>
   );

@@ -16,16 +16,17 @@ function App() {
   return (
 
     <Router>
-      <Switch>
-        <Route exact path="/" component={LandingPage} />
-        <Route path="/admin-login" component={AdminLogin} />
-        <Route path="/client-providers" component={ClientProviders} />
-        <Route path="/client-main/:provider" component={ClientMain} />
-        <Route path="/client-individual/:id" component={ClientIndividual} />
-        <PrivateRoute path="/admin-providers" component={AdminProviders} />
-        <PrivateRoute path="/admin-main/:provider" component={AdminMain} />
-        <PrivateRoute path="/admin-individual/:id" component={AdminIndividual} />
-      </Switch>
+      <Header />
+        <Switch>
+          <Route exact path="/" component={LandingPage} />
+          <Route path="/admin-login" component={AdminLogin} />
+          <Route path="/client-providers" component={ClientProviders} />
+          <Route path="/client-main/:provider" component={ClientMain} />
+          <Route path="/client-individual/:id" component={ClientIndividual} />
+          <PrivateRoute path="/admin-providers" component={AdminProviders} />
+          <PrivateRoute path="/admin-main/:provider" component={AdminMain} />
+          <PrivateRoute path="/admin-individual/:id" component={AdminIndividual} />
+        </Switch>
     </Router>
   );
 }
