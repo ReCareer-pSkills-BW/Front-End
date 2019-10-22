@@ -27,9 +27,8 @@ const [prison, setPrisonList] = useState([])
 
             <p>testing</p>
         {prison.map(value => (
-            <NavLink to = {`/prisons/${value.id}`}> 
+        
             <PrisonCard value ={value}/>
-            </NavLink>
         ))}
         </div>
     )
