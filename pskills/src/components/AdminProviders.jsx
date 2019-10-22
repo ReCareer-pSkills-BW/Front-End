@@ -47,6 +47,22 @@ const AdminProviders = (props) => {
         return <h3>Loading Data...</h3>
     }
     console.log(props.jobData)
+
+    function compare(a, b) {
+        const nameA = a.name.toUpperCase();
+        const nameB = b.name.toUpperCase();
+      
+        let comparison = 0;
+        if (nameA > nameB) {
+          comparison = 1;
+        } else if (nameA < nameB) {
+          comparison = -1;
+        }
+        return comparison;
+      }
+      
+      props.jobData.sort(compare);
+
     return (
 
         <Providers>

@@ -60,7 +60,7 @@ return(
             <label>Enter a Password: </label>
             <Input name ="password" type="password" onChange={onInputChange}/> 
             <br/>
-            <NavStyle to ='/admin-providers' onClick={() => dispatch(adminReg(newAdmin))}>Register</NavStyle>
+            <NavStyle to ='/admin-login' onClick={() => dispatch(adminReg(newAdmin))}>Register</NavStyle>
         </Form>
     </Page>
  )
