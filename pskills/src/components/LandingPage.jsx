@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from "react"
 import styled from "styled-components";
+import { backgroundColor} from '../Styling';
 
 const Main = styled.div`
 background-color: rgba(248, 248, 255, 1);

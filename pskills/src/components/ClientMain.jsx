@@ -2,6 +2,32 @@ import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import {fetchData} from '../actions/index';
 import '../App.css'
+import styled from "styled-components";
+import { backgroundColor, cardColor, mainFont } from '../Styling';
+
+const H1 = styled.h1 `
+
+`
+
+const MainDisplay = styled.div `
+    background: ${backgroundColor};
+    height: 100vh;
+    display:flex;
+`
+
+const Card = styled.div `
+    text-align:center;
+    background: ${cardColor};
+    height: 20%;
+    width: 20%;
+    border-radius:10px;
+    margin: 3%;
+    border:1px solid black;
+    justify-content:space-evenly;
+        :hover{
+            cursor: pointer;
+        }
+`
 
 const initialLocation = {
     id: '',
@@ -37,21 +63,36 @@ const ClientMain = (props) => {
     
         return (
             <>
-                <h1>Data</h1>
-                <div className="main-display">
+                <H1>Data</H1>
+                <MainDisplay>
                     
                     {props.error && <p>{props.error}</p>}
                         <>
-                            <div className='card'>
+                            <Card onClick={() => props.history.push(`/client-individual/${location.id}`)}>
                                 <p>{location.name}</p>
                                 <p>{location.type}</p>
                                 <p>{location.dimension}</p>
-                            </div>
+                            </Card>
+                            <Card>
+                                <p>{location.name}</p>
+                                <p>{location.type}</p>
+                                <p>{location.dimension}</p>
+                            </Card>
+                            <Card>
+                                <p>{location.name}</p>
+                                <p>{location.type}</p>
+                                <p>{location.dimension}</p>
+                            </Card>
+                            <Card>
+                                <p>{location.name}</p>
+                                <p>{location.type}</p>
+                                <p>{location.dimension}</p>
+                            </Card>
                         </>
 
 
-                </div>
-                </>
+                </MainDisplay>
+            </>
         );
 }
 
