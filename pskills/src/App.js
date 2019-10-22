@@ -9,10 +9,12 @@ import AdminMain from './components/AdminMain';
 import AdminIndividual from './components/AdminIndividual';
 import ClientProviders from './components/ClientProviders';
 import ClientMain from './components/ClientMain';
+import Header from './components/Header';
 import ClientIndividual from './components/ClientIndividual';
 
 function App() {
   return (
+
     <Router>
       <Switch>
         <Route exact path="/" component={LandingPage} />
