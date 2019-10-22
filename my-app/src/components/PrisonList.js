@@ -21,10 +21,12 @@ const [prison, setPrisonList] = useState([])
 
     return (
         <div>
-          
+
             <p>testing</p>
         {prison.map(value => (
-            <PrisonCard prisonImage ={value.image} prisonName={value.name}  prisonSpecies={value.species} prisonLocation ={value.location.name}/>
+            <NavLink to = {`/prison-list/${value.id}`}> 
+            <PrisonCard value ={value}/>
+            </NavLink>
         ))}
         </div>
     )

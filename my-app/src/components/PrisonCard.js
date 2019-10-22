@@ -2,12 +2,13 @@ import React from 'react'
 
 
 const PrisonCard = props => {
+    
     return(
     <div>
-        <img src ={props.prisonImage}/>
-        <h2>{props.prisonName}</h2>
-        <p>{props.prisonSpecies}</p>
-        <p>{props.prisonLocation}</p>
+        <img src ={props.value.image}/>
+        <h2>{props.value.name}</h2>
+        <p>{props.value.species}</p>
+    
     </div>
              
     )
