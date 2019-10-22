@@ -36,7 +36,7 @@ return(
         <label>Enter Password: </label>
         <input name ="passWord" type="password" onChange={onInputChange}/> 
         <br/>
-        <NavStyle to ='./prison-list'>Login</NavStyle>
+        <NavStyle to ='/admin-providers'>Login</NavStyle>
     </form>
     </div>
  )
