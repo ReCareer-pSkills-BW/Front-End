@@ -25,11 +25,16 @@ const onInputChange = e =>
    
   
 
+   const onSubmit = (e) => {
+    e.preventDefault(); 
+    
+   
+   }
  
 return(
     <div>
     <h2>AdminLogin</h2>
-    <form>
+    <form onSubmit={onSubmit}>
         <label>Enter Username: </label>
         <input type="text" name="userName" onChange={onInputChange}/> 
         <br/>
@@ -44,4 +49,3 @@ return(
 }
 
 export default AdminLogin;
-

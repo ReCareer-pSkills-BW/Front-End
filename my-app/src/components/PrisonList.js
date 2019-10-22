@@ -6,20 +6,17 @@ import PrisonCard from './PrisonCard'
 
 function PrisonList() {
 const [prison, setPrisonList] = useState([])
- 
+
     useEffect(() =>{
-        const getPrisons = () => {
         axios.get('https://rickandmortyapi.com/api/character/')
           .then( res => {
               setPrisonList(res.data.results);
-              console.log(res)
+              console.log(res.data)
              
           })
          .catch(err => {
              console.log('Error in server', err)
          })
-    }
-    getPrisons(); 
     }, [])
 
     return (
@@ -27,7 +24,7 @@ const [prison, setPrisonList] = useState([])
 
             <p>testing</p>
         {prison.map(value => (
-            <NavLink to = {`/prisons/${value.id}`}> 
+            <NavLink to = {`/prison-list/${value.id}`}> 
             <PrisonCard value ={value}/>
             </NavLink>
         ))}

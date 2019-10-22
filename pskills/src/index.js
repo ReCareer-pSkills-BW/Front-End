@@ -4,6 +4,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import {BrowserRouter as Router} from 'react-router-dom'
 
 // React 2 stuff, feel free to check it out
 
@@ -19,7 +20,7 @@ ReactDOM.render(
     <Provider store={store}>
       <Router>
       <App />
-      </Router>
+      </Router> 
     </Provider>  , 
   document.getElementById('root'));
 
