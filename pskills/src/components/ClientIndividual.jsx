@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from "react";
 import ClientCard from './clientCard';
 import axios from 'axios';
+import styled from 'styled-components';
+
+
 
 export default function ClientIndividual() {
     const [employee, setEmployee] = useState([])
 
-// need to get specific ID
+    const Cards = styled.div`
+    display: flex;
+    justify-content: center;
+    `
+
+    // need to get specific ID
     const get = 'https://rickandmortyapi.com/api/character/' + ""
 
     useEffect(() => {
@@ -25,12 +33,14 @@ export default function ClientIndividual() {
         <div>
             {employee.map(person => {
                 return (
-                    <ClientCard
-                        name={person.name}
-                        image={person.image}
-                        bio={person.gender}
-                        skills={person.status}
-                        location={person.location} />
+                    <Cards>
+                        <ClientCard
+                            name={person.name}
+                            image={person.image}
+                            bio={person.gender}
+                            skills={person.status}
+                            location={person.location} />
+                    </Cards>
                 );
             })}
 
