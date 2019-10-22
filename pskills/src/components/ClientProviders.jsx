@@ -1,8 +1,38 @@
 import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
 import {fetchData} from '../actions/index';
-import '../App.css';
+import styled from "styled-components";
+import { backgroundColor, cardColor, mainFont } from '../Styling';
 
+const Providers = styled.div `
+    background: ${backgroundColor};
+    text-align:center;
+    margin-top: 3%;
+
+`
+
+const ClientCard = styled.div `
+    background: ${cardColor};
+    width:30%;
+    margin: 3% 35%;
+    padding: 2% 0%;
+    border-radius:10px;
+    border:1px solid black;
+    font-size:1.2em;
+        
+`
+
+const H4 = styled.h4 `
+    width:30%;
+    margin: 0 35% 4%;
+    transition: color 1s;
+    transition: transform 1s;
+        :hover{
+            color: lightskyblue;
+            cursor: pointer;
+            transform: scale(1.5);
+        }
+`
 
 const ClientProviders = (props) => {
 
@@ -19,17 +49,18 @@ const ClientProviders = (props) => {
     console.log(props.jobData)
         return (
 
-               
-                <div className='providers'>
+            <Providers>
                 <h1>Provider Locations</h1>
-                {props.jobData.map(data => (
-                        
-                    <div>
-                        <h4 onClick={() => props.history.push(`/client-main/${data.id}`)}>{data.name}</h4>
-                    </div>
-                
-                ))}
-            </div> 
+                <ClientCard>
+                    {props.jobData.map(data => (
+                        <H4 onClick={() => props.history.push(`/client-main/${data.id}`)}>{data.name}</H4>
+                    ))} 
+                </ClientCard>
+
+             
+            </Providers>                     
+             
+
         )
 }
 
