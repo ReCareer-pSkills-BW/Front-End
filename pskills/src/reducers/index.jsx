@@ -1,4 +1,4 @@
-import {LOAD_DATA, LOAD_SUCCESS, LOAD_FAILURE, START_LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE} from '../actions/index'
+import {LOAD_DATA, LOAD_SUCCESS, LOAD_FAILURE, START_LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE, DELETE_DATA, DELETE_SUCCESS, DELETE_FAILURE, EDIT_DATA, EDIT_SUCCESS, EDIT_FAILURE } from '../actions/index'
 
 const initialState = {
         jobData: [],
@@ -60,6 +60,44 @@ const reducer = (state=initialState, action) => {
                     error: ''
                 }
             case LOGIN_FAILURE:
+                return {
+                    ...state,
+                    loading: false,
+                    error: action.payload
+                }
+                case EDIT_DATA:
+                return {
+                    ...state,
+                    loading: true,
+                    error: ''
+                }
+            case EDIT_SUCCESS: 
+                return {
+                    ...state,
+                    loading: false,
+                    candidate: action.payload,
+                    error: ''
+                }
+            case EDIT_FAILURE:
+                return {
+                    ...state,
+                    loading: false,
+                    error: action.payload
+                }
+                case DELETE_DATA:
+                return {
+                    ...state,
+                    loading: true,
+                    error: ''
+                }
+            case DELETE_SUCCESS: 
+                return {
+                    ...state,
+                    loading: false,
+                    candidate: action.payload,
+                    error: ''
+                }
+            case DELETE_FAILURE:
                 return {
                     ...state,
                     loading: false,
