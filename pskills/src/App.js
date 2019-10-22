@@ -11,6 +11,7 @@ import ClientProviders from './components/ClientProviders';
 import ClientMain from './components/ClientMain';
 import Header from './components/Header';
 import ClientIndividual from './components/ClientIndividual';
+import AdminRegister from './components/AdminRegister';
 import styled from "styled-components";
 import { backgroundColor } from './Styling';
 
@@ -25,6 +26,7 @@ function App() {
         <Header />
           <Switch>
             <Route exact path="/" component={LandingPage} />
+            <Route path="/admin-register" component={AdminRegister} />
             <Route path="/admin-login" component={AdminLogin} />
             <Route path="/client-providers" component={ClientProviders} />
             <Route path="/client-main/:provider" component={ClientMain} />

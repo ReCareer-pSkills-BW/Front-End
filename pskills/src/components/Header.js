@@ -30,7 +30,7 @@ height: auto;
 margin: 10px;
 `
 const ButtonDiv = styled.div `
-margin: 0 0 1vh 65vw;
+margin: 0 0 1vh 63vw;
   
 `
 
@@ -41,6 +41,7 @@ export default function Header() {
         <Pic src={require('./ReCareerlogo.png')} />
         <ButtonDiv>
           <NavLink to={'/'}><Nav>Home</Nav></NavLink>
+          <NavLink to={'/admin-register'}><Nav>Register</Nav></NavLink>
           <NavLink to={'/admin-login'}><Nav>Login</Nav></NavLink>
           <NavLink to={'/client-providers'}><Nav>View Providers</Nav></NavLink>
           {/* <NavLink to={'/individual'}><Nav>individual</Nav></NavLink> */}
