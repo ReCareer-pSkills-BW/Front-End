@@ -1,7 +1,7 @@
 import React,{useState, useEffect} from 'react'
 import axios from 'axios'
-import {NavLink} from 'react-router-dom'
 import PrisonCard from './PrisonCard'
+import AddCandidate from './AddCandidate'
 
 
 function PrisonList() {
@@ -24,11 +24,11 @@ const [prison, setPrisonList] = useState([])
 
     return (
         <div>
+       <AddCandidate/> 
 
-            <p>testing</p>
         {prison.map(value => (
         
-            <PrisonCard value ={value}/>
+    <PrisonCard value ={value}/>
         ))}
         </div>
     )
