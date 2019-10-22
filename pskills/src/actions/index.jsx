@@ -14,3 +14,15 @@ export const fetchData = () => (dispatch) => {
         .then(res => dispatch({ type: LOAD_SUCCESS, payload: res.data.results}))
         .catch(err => dispatch({ type: LOAD_FAILURE, payload: err.response}))
 }
+
+export const START_LOGIN = 'START_LOGIN';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAILURE = 'LOGIN_FAILURE';
+
+export const postLogin = (user) => (dispatch) => {
+    dispatch({type: START_LOGIN})
+    axiosWithLoginAuth()
+    .post('', user) 
+        .then(res => dispatch({type: LOGIN_SUCCESS, payload: res.data}))
+        .catch(err => dispatch({ type: LOGIN_FAILURE, payload: err.response}))
+}
