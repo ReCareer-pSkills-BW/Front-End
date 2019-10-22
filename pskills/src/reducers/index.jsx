@@ -8,7 +8,16 @@ const initialState = {
         user: [
             {
                 username: '',
-                password: ''
+                password: '',
+            }
+        ],
+
+        candidate: [
+            {
+                first_name: '',
+                last_initial: '',
+                primary_skill: '',
+                provider_id: ''
             }
         ]
     
