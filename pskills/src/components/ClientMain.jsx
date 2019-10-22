@@ -44,16 +44,34 @@ const ClientMain = (props) => {
     const thisId = props.match.params.provider - 1
 
     useEffect (() => {
+        
         props.fetchData();
+        // function compare(a, b) {
+        //     const nameA = a.name.toUpperCase();
+        //     const nameB = b.name.toUpperCase();
+          
+        //     let comparison = 0;
+        //     if (nameA > nameB) {
+        //       comparison = 1;
+        //     } else if (nameA < nameB) {
+        //       comparison = -1;
+        //     }
+        //     return comparison;
+        //   }
+        //   props.jobData.sort(compare);
         setLocation(props.jobData[thisId]);
         const thisLocation = props.jobData.find(
             location => `${location}` === props.jobData[thisId]
-        );
+        );    console.log(location)
+
         if (thisLocation) setLocation(thisLocation);
+
     }, [])
-    
+
+    console.log(props.jobData)
     console.log(props.jobData[thisId])
-  
+    console.log(props.location.key)
+    console.log(props.id)
     console.log(props.match.params.provider)
 
     if(props.loading) {
