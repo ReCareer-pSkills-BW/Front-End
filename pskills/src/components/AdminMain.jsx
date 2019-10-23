@@ -13,7 +13,7 @@ const H1 = styled.h1`
 
 const MainDisplay = styled.div`
     background: ${backgroundColor};
-    height: 100vh;
+    height: 100%;
     display:flex;
 `
 
@@ -29,9 +29,22 @@ const Card = styled.div`
 `
 const Form = styled.form`
 display: flex;
-flex-direction: columns;
+flex-direction: column;
 align-items: center;
-height 400px;
+`
+const Input = styled.input`
+padding: 10 px;
+margin: 10px; 
+`
+
+const Button = styled.button`
+background: blue;
+color: white;
+border: none;
+height: 60px;
+width: 170px;
+font-size: 1.4rem;
+margin: auto;
 `
 
 const initialLocation = {
@@ -99,12 +112,11 @@ const AdminMain = (props) => {
 
     return (
         <>
-            <H1>Data</H1>
-            <button onClick={click}>{!display && "Add Person" || 'Hide' }</button>
+            <H1>Potential Employees...</H1>
             {display && <Form onSubmit={submit}>
                 <div>
-                <label htmlFor="name">Name</label>
-                <input
+                <label htmlFor="name">Name:</label>
+                <Input
                     name="name"
                     id="name"
                     type="text"
@@ -114,8 +126,8 @@ const AdminMain = (props) => {
                 />
                 </div>
                 <div>
-                <label htmlFor="location">Location</label>
-                <textarea
+                <label htmlFor="location">Location:</label>
+                <Input
                     name="location"
                     id="location"
                     placeholder="Location"
@@ -124,8 +136,8 @@ const AdminMain = (props) => {
                 />
                 </div>
                 <div>
-                <label htmlFor="skills">Skills</label>
-                <textarea
+                <label htmlFor="skills">Skills:</label>
+                <Input
                     name="skills"
                     id="skills"
                     placeholder="Skills"
@@ -164,9 +176,10 @@ const AdminMain = (props) => {
                         <p>Skills: {employee.skills}</p>
                     </Card>}
                 </>
-
-
-            </MainDisplay>
+                </MainDisplay>
+                <MainDisplay>
+                <Button onClick={click}>{!display && "Add Canidate" || 'Hide' }</Button>
+                </MainDisplay>
         </>
     );
 }
