@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react"
 import styled from "styled-components";
 import { backgroundColor} from '../Styling';
 
+
 const Main = styled.div`
 background-color: rgba(248, 248, 255, 1);
 color: rgba(8, 69, 126, 1);
@@ -33,6 +34,7 @@ flex-direction: column;
 align-items: center; 
 width: 50%;
 padding: 10px;
+transition: display 1s;
 `
 const Names = styled.h2`
 font-size: 2rem;
@@ -45,6 +47,25 @@ background: rgba(8, 69, 126, 1);
 border: none;
 margin: 10px;
 border-radius: 15px;
+transition: color 1s;
+  :hover{
+    color: rgba(8, 69, 126, 1);
+    background: white;
+    cursor: pointer;
+  }
+`
+const AboutOneDisplay = styled.p`
+-webkit-animation: fadein 2000ms; 
+       -moz-animation: fadein 2s;
+        -ms-animation: fadein 2s; 
+         -o-animation: fadein 2s; 
+            animation: fadein 2s;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
 `
 
 export default function Home() {
@@ -64,11 +85,13 @@ export default function Home() {
     const clickTwo = e => {
         if (displayTwo == true) {
             setDisplayTwo(false);
+
         }
         if (displayTwo == false) {
             setDisplayTwo(true);
         }
     };
+    
 
     return (
         <>
@@ -85,7 +108,8 @@ export default function Home() {
                         <Information>
                             <Names> Rick</Names>
                             <h3> Atlanta, Georgia</h3>
-                            {displayTwo && (<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque felis eu mauris eleifend, a accumsan lorem consectetur. Cras condimentum lacus eget neque interdum, vitae iaculis orci convallis. Sed faucibus a tellus nec consequat. Nam vulputate purus mauris, at interdum felis blandit a. Nulla sed erat ac sem tempus facilisis. Ut gravida hendrerit dolor, a euismod velit ullamcorper nec. Nulla cursus, quam et pulvinar posuere, tellus odio blandit metus, ac bibendum mauris ligula vel justo.</p>)}
+                            {displayTwo && (<AboutOneDisplay>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque felis eu mauris eleifend, a accumsan lorem consectetur. Cras condimentum lacus eget neque interdum, vitae iaculis orci convallis. Sed faucibus a tellus nec consequat. Nam vulputate purus mauris, at interdum felis blandit a. Nulla sed erat ac sem tempus facilisis. Ut gravida hendrerit dolor, a euismod velit ullamcorper nec. Nulla cursus, quam et pulvinar posuere, tellus odio blandit metus, ac bibendum mauris ligula vel justo.</AboutOneDisplay>)}
+                            
                             <Learn onClick={clickTwo}>{!displayTwo && "Learn More!" || "Show Less"}</Learn>
                         </Information>
                     </Card>
@@ -95,7 +119,7 @@ export default function Home() {
                         <Information>
                             <Names> Ricky</Names>
                             <h3> New York City, New York</h3>
-                            {display && (<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque felis eu mauris eleifend, a accumsan lorem consectetur. Cras condimentum lacus eget neque interdum, vitae iaculis orci convallis. Sed faucibus a tellus nec consequat. Nam vulputate purus mauris, at interdum felis blandit a. Nulla sed erat ac sem tempus facilisis. Ut gravida hendrerit dolor, a euismod velit ullamcorper nec. Nulla cursus, quam et pulvinar posuere, tellus odio blandit metus, ac bibendum mauris ligula vel justo.</p>)}
+                            {display && (<AboutOneDisplay>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque felis eu mauris eleifend, a accumsan lorem consectetur. Cras condimentum lacus eget neque interdum, vitae iaculis orci convallis. Sed faucibus a tellus nec consequat. Nam vulputate purus mauris, at interdum felis blandit a. Nulla sed erat ac sem tempus facilisis. Ut gravida hendrerit dolor, a euismod velit ullamcorper nec. Nulla cursus, quam et pulvinar posuere, tellus odio blandit metus, ac bibendum mauris ligula vel justo.</AboutOneDisplay>)}
                             <Learn onClick={click}>{!display && "Learn More!" || "Show Less"}</Learn>
                         </Information>
                     </Card>

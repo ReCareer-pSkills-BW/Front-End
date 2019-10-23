@@ -2,15 +2,14 @@ import React from "react";
 import styled from "styled-components";
 
 const Card = styled.div`
-width: 800px;
-display: flex;
-justify-content: center;
-flex-direction: column;
-align-items: center;
-margin: 1%;
-color: maroon;
-text-align: center;
-background: teal;
+background: rgba(255, 255, 255, 0.8);
+border-radius: 10px;
+box-shadow: 0 0 10px black;
+padding: 1rem 2.2rem;
+max-width: 100%;
+text-align: center; 
+margin-top: 1.5rem;
+
 `
 
 export default function ClientCard(props) {
