@@ -23,7 +23,9 @@ export const adminLogin = (user) => (dispatch) => {
     dispatch({type: START_LOGIN})
     axiosWithLoginAuth()
     .post('', user) 
-        .then(res => dispatch({type: LOGIN_SUCCESS, payload: res.data}))
+        .then(res => { dispatch({type: LOGIN_SUCCESS, payload: res.data})
+        localStorage.setItem('token', res.data.payload)
+    })
         .catch(err => dispatch({ type: LOGIN_FAILURE, payload: err.response}))
 }
 

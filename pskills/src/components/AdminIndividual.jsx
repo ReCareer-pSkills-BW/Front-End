@@ -22,12 +22,12 @@ const [prison, setPrisonList] = useState([])
     }
     getPrisons(); 
     }, [])
-   const addCandidate = newCandidate => {
+   const editCandidate = newCandidate => {
        setPrisonList([...prison, newCandidate])
    }
     return (
         <div>
-       <AddCandidate addCandidate ={addCandidate}/> 
+       <AddCandidate editCandidate ={editCandidate}/> 
            
         {prison.map(value => (
 

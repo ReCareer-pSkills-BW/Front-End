@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import {adminEdit} from '../actions/index';
 
 
 
@@ -18,26 +19,41 @@ margin-bottom: 1.2rem;
 
 `
 
+const initialCandidate ={
+    id: '',
+    first_name: '',
+    last_name: ''
+}
+
 const AddCandidate = props => {
-    const [candidate, setCandidate] = useState([{
-        name: '' ,
-        species: ''
-    }])
+
+    const [editing, setEditing] = useState(false);
+    const [candidateToEdit, setCandidateToEdit] = useState(initialCandidate);
+    const [candidateInfo, setCandidateInfo] = useState(initialCandidate)
+
+    const editCandidate = candidate => {
+        setEditing(true);
+        setCandidateToEdit(candidateInfo);
+      };
    
+      const confirmEdit = e => {
+          e.preventDefault();
+          adminEdit()
+      }
 
   const submitForm = e => {
       e.preventDefault();
-      props.addCandidate(candidate);
-      setCandidate([{name: '', species: ''}]) 
+      props.editCandidate(candidateInfo);
+      setCandidateInfo([{name: '', species: ''}]) 
   }
 
     const changeHandler = e => {
-        setCandidate({...candidate, [e.target.name]: e.target.value})
+        setCandidateToEdit({...candidateToEdit, [e.target.name]: e.target.value})
     }
     
     return(
       <div>
-           <FormStyle onSubmit ={submitForm} >
+           <FormStyle  onClick={() => confirmEdit(candidateInfo)} >
               <label htmlFor = 'name'>Name</label>
               <InputStyle 
               name ='name'
@@ -53,7 +69,7 @@ const AddCandidate = props => {
                   id ='species'
                   placeholder ='Enter Species' 
                   onChange={changeHandler}/>
-              <button type='submit'>Add Candidate</button>
+              <button type='submit'>Confirm Changes</button>
           </FormStyle>
       </div>
      ) 
