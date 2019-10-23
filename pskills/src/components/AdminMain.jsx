@@ -13,7 +13,7 @@ const H1 = styled.h1`
 
 const MainDisplay = styled.div`
     background: ${backgroundColor};
-    height: 100%;
+    height: 100vh;
     display:flex;
 `
 
@@ -28,23 +28,17 @@ const Card = styled.div`
     justify-content:space-evenly;
 `
 const Form = styled.form`
-display: flex;
-flex-direction: column;
-align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `
 const Input = styled.input`
-padding: 10 px;
-margin: 10px; 
+    padding: 10 px;
+    margin: 10px; 
 `
 
 const Button = styled.button`
-background: blue;
-color: white;
-border: none;
-height: 60px;
-width: 170px;
-font-size: 1.4rem;
-margin: auto;
+margin: 2% 50% 2%;
 `
 
 const initialLocation = {
@@ -147,6 +141,7 @@ const AdminMain = (props) => {
                 </div>
                 <button onClick={() => dispatch(adminAddCandidate(employee))}>Add Employee</button>
             </Form>}
+            <Button onClick={click}>{!display && "Add Canidate" || 'Hide' }</Button>
             <MainDisplay>
                 {props.error && <p>{props.error}</p>}
                 <>
@@ -174,11 +169,8 @@ const AdminMain = (props) => {
                         <p>Name:{employee.name}</p>
                         <p>Location:{employee.location}</p>
                         <p>Skills: {employee.skills}</p>
-                    </Card>}
-                </>
-                </MainDisplay>
-                <MainDisplay>
-                <Button onClick={click}>{!display && "Add Canidate" || 'Hide' }</Button>
+                    </Card>}                
+                </> 
                 </MainDisplay>
         </>
     );

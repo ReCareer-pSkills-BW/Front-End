@@ -3,15 +3,17 @@ import {NavLink} from 'react-router-dom'
 import styled from 'styled-components'
 import { backgroundColor } from '../Styling';
 import {connect, useDispatch} from 'react-redux';
-import {adminReg} from '../actions/index';
+import {adminLogin} from '../actions/index';
 
 
 
 const NavStyle = styled(NavLink)`
-  padding: 0.2rem 1.2rem;
-  border-radius: 5px; 
-  text-decoration: none;
-  margin-top: 10rem;
+    padding: 0.2rem 1.2rem;
+    background: #333;
+    border-radius: 5px; 
+    text-decoration: none;
+    color: #fff;
+    margin-top: 10rem;
 `
 
 const Page = styled.div `
@@ -60,7 +62,7 @@ return(
             <label>Enter a Password: </label>
             <Input name ="password" type="password" onChange={onInputChange}/> 
             <br/>
-            <NavStyle to ='/admin-login' onClick={() => dispatch(adminReg(newAdmin))}>Register</NavStyle>
+            <NavStyle to ='/admin-login' onClick={() => dispatch(adminLogin(newAdmin))}>Register</NavStyle>
         </Form>
     </Page>
  )
@@ -75,4 +77,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, {adminReg})(AdminRegister)
+export default connect(mapStateToProps, {adminLogin})(AdminRegister)
