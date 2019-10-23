@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-
+import {adminDel} from '../actions/index';
 
 
 const CardContainer = styled.div`
@@ -24,12 +24,17 @@ text-align: center;
 
 const PrisonCard = props => {
     
+    const deleteCandidate = id => {
+        adminDel(id)
+    }
+
     return(
     <CardContainer>
        <ItemContainer>
         <img src ={props.value.image}/>
         <h2>{props.value.name}</h2>
         <p>{props.value.species}</p>
+        <button onClick={() => deleteCandidate(props.candidate.id)}>Delete Candidate</button>
        </ItemContainer>
     </CardContainer>
              
