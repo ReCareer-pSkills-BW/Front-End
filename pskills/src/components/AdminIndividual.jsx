@@ -1,11 +1,12 @@
 import React,{useState, useEffect} from 'react'
 import axios from 'axios'
-import {NavLink} from 'react-router-dom'
 import PrisonCard from './PrisonCard'
+import AddCandidate from './AddCandidate'
 
 
 function PrisonList() {
 const [prison, setPrisonList] = useState([])
+
  
     useEffect(() =>{
         const getPrisons = () => {
@@ -21,15 +22,16 @@ const [prison, setPrisonList] = useState([])
     }
     getPrisons(); 
     }, [])
-
+   const addCandidate = newCandidate => {
+       setPrisonList([...prison, newCandidate])
+   }
     return (
         <div>
-
-            <p>testing</p>
+       <AddCandidate addCandidate ={addCandidate}/> 
+           
         {prison.map(value => (
-            <NavLink to = {`/prisons/${value.id}`}> 
-            <PrisonCard value ={value}/>
-            </NavLink>
+
+      <PrisonCard value ={value}/>
         ))}
         </div>
     )
