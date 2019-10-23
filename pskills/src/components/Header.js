@@ -30,7 +30,8 @@ height: auto;
 margin: 10px;
 `
 const ButtonDiv = styled.div `
-margin: 0 0 1vh 53vw;
+ margin: 0 0 1vh 40vw;
+display: flex;
   
 `
 
