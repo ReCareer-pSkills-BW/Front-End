@@ -3,6 +3,10 @@ import {NavLink} from 'react-router-dom'
 import styled from 'styled-components'
 import {connect, useDispatch} from 'react-redux';
 import {adminReg} from '../actions/index';
+import { backgroundColor } from '../Styling';
+import {adminLogin} from '../actions/index';
+
+
 
 const NavStyle = styled(NavLink)`
   padding: 0.2rem 1.2rem;
@@ -12,7 +16,28 @@ const NavStyle = styled(NavLink)`
   color: #fff;
   margin-top: 10rem;
 `
+const Page = styled.div `
+    background: ${backgroundColor};
+    height:100vh;
+`
+const Form = styled.form `
+    background: white;
+    width:30vw;
+    margin: 5% 35vw
+    border-radius: 10px;
+    border: 1px solid black;
+    height: 30vh;
+    text-align:center;
+`
 
+const Input = styled.input `
+    margin: 20px 10px;
+`
+
+const H2 = styled.h2 `
+    text-align:center;
+    margin: 30px 0 40px
+`
 
 function AdminLogin() {
 
@@ -32,18 +57,18 @@ const onInputChange = e =>
 
  
 return(
-    <div>
-    <h2>AdminLogin</h2>
-    <form>
-        <label>Enter Username: </label>
-        <input type="text" name="username" onChange={onInputChange}/> 
-        <br/>
-        <label>Enter Password: </label>
-        <input name ="password" type="password" onChange={onInputChange}/> 
-        <br/>
-        <NavStyle to ='/admin-providers' onClick={() => dispatch(adminReg(admin))}>Login</NavStyle>
-    </form>
-    </div>
+    <Page>
+        <Form>
+            <H2>Admin Login</H2>
+            <label>Enter a Username: </label>
+            <Input type="text" name="username" onChange={onInputChange}/> 
+            <br/>
+            <label>Enter a Password: </label>
+            <Input name ="password" type="password" onChange={onInputChange}/> 
+            <br/>
+            <NavStyle to ='/admin-providers' onClick={() => dispatch(adminLogin())}>Login</NavStyle>
+        </Form>
+</Page>
  )
 
 }
@@ -57,4 +82,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, {adminReg})(AdminLogin)
+export default connect(mapStateToProps, {adminLogin})(AdminLogin)
