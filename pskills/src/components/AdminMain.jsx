@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { fetchData } from '../actions/index';
 import '../App.css'
 import styled from "styled-components";
 import { backgroundColor, cardColor, mainFont } from '../Styling';
+import { adminAddCandidate } from '../actions/index';
 
 
 const H1 = styled.h1`
@@ -44,6 +45,9 @@ const initialLocation = {
 
 const AdminMain = (props) => {
     const [location, setLocation] = useState(initialLocation)
+
+    const dispatch = useDispatch()
+
 
     const [employee, setEmployee] = useState({
         name: " ",
@@ -129,7 +133,7 @@ const AdminMain = (props) => {
                     value={employee.skills}
                 />
                 </div>
-                <button type="submit">Add Employee</button>
+                <button onClick={() => dispatch(adminAddCandidate(employee))}>Add Employee</button>
             </Form>}
             <MainDisplay>
                 {props.error && <p>{props.error}</p>}

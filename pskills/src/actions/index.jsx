@@ -50,3 +50,15 @@ export const adminEdit = (user) => (dispatch) => {
         .then(res => dispatch({type: EDIT_SUCCESS, payload: res.data}))
         .catch(err => dispatch({ type: EDIT_FAILURE, payload: err.response}))
 }
+
+export const ADD_DATA = 'ADD_DATA';
+export const ADD_SUCCESS = 'ADD_SUCCESS';
+export const ADD_FAILURE = 'ADD_FAILURE';
+
+export const adminAddCandidate = (candidate) => (dispatch) => {
+    dispatch({type: ADD_DATA})
+    axiosWithLoginAuth()
+    .post('', candidate) 
+        .then(res => dispatch({type: ADD_SUCCESS, payload: res.data}))
+        .catch(err => dispatch({ type: ADD_FAILURE, payload: err.response}))
+}
