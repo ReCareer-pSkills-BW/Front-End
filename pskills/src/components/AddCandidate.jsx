@@ -1,5 +1,22 @@
 import React, { useState } from 'react'
+import styled from 'styled-components'
 
+
+
+const FormStyle = styled.form`
+display: flex; 
+flex-direction: column;
+align-content: center;
+align-items: center; 
+`
+
+
+const InputStyle = styled.input`
+
+margin-bottom: 1.2rem; 
+
+
+`
 
 const AddCandidate = props => {
     const [candidate, setCandidate] = useState([{
@@ -18,25 +35,24 @@ const AddCandidate = props => {
     
     return(
       <div>
-           <form onSubmit ={submitForm} >
+           <FormStyle onSubmit ={submitForm} >
               <label htmlFor = 'name'>Name</label>
-              <input 
+              <InputStyle 
               name ='name'
               type ='text'
               id ='name'
-              placeHolder ='EnterName'  
+              placeholder ='Enter Name'  
              onChange={changeHandler}/>
             
-              <label htmlFor ='species'>
-                  <input 
+              <label htmlFor ='species'> Species</label>
+                  <InputStyle 
                   name ='species'
                   type ='text'
                   id ='species'
-                  placeHolder ='Enter Species' 
+                  placeholder ='Enter Species' 
                   onChange={changeHandler}/>
-              </label>
               <button type='submit'>Add Candidate</button>
-          </form>
+          </FormStyle>
       </div>
      ) 
 
