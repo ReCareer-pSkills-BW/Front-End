@@ -27,6 +27,8 @@ const AddCandidate = props => {
 
   const submitForm = e => {
       e.preventDefault();
+      props.addCandidate(candidate);
+      setCandidate([{name: '', species: ''}]) 
   }
 
     const changeHandler = e => {

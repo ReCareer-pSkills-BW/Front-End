@@ -6,6 +6,7 @@ import AddCandidate from './AddCandidate'
 
 function PrisonList() {
 const [prison, setPrisonList] = useState([])
+
  
     useEffect(() =>{
         const getPrisons = () => {
@@ -21,14 +22,16 @@ const [prison, setPrisonList] = useState([])
     }
     getPrisons(); 
     }, [])
-
+   const addCandidate = newCandidate => {
+       setPrisonList([...prison, newCandidate])
+   }
     return (
         <div>
-       <AddCandidate/> 
-
+       <AddCandidate addCandidate ={addCandidate}/> 
+           
         {prison.map(value => (
-        
-    <PrisonCard value ={value}/>
+
+      <PrisonCard value ={value}/>
         ))}
         </div>
     )
