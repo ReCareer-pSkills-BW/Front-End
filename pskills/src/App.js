@@ -33,6 +33,7 @@ function App() {
             <Route path="/client-individual/:id" component={ClientIndividual} />
             <Route path="/admin-providers" component={AdminProviders} />
             <Route path="/admin-main/:provider" component={AdminMain} />
+            <Route path ="/admin-individual" component ={AdminIndividual}/> 
           </Switch>
       </Router>
     </AppDiv>
