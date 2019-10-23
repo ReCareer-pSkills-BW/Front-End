@@ -9,7 +9,12 @@ padding: 1rem 2.2rem;
 max-width: 100%;
 text-align: center; 
 margin-top: 1.5rem;
+transition: transform 1.5s;
 
+&:hover {
+  transform: scale(1.3);
+  margin: 5rem;
+}
 `
 
 export default function ClientCard(props) {

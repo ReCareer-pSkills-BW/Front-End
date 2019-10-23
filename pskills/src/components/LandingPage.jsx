@@ -50,7 +50,7 @@ border-radius: 15px;
 transition: color 1s;
   :hover{
     color: rgba(8, 69, 126, 1);
-    background: white;
+    background: rgba(248, 248, 255, 1);
     cursor: pointer;
   }
 `
