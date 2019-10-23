@@ -37,8 +37,8 @@ const initialLocation = {
   };
 
   
-
-const ClientMain = (props) => {  
+let props = {}
+const ClientMain = (props) => { 
     const [location, setLocation] = useState(initialLocation)
 
     const thisId = props.match.params.provider - 1
@@ -78,7 +78,9 @@ const ClientMain = (props) => {
         
         return <h3>Loading Data...</h3>
     }
-    
+    if(location == undefined) {
+        return <h3>Please go back and choose a prison...</h3>
+    }
         return (
             <>
                 <H1>Data</H1>
