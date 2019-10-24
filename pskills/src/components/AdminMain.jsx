@@ -18,7 +18,7 @@ const MainDisplay = styled.div`
     display:flex;
 `
 
-const CardLink = styled.div`
+const Card = styled.div`
     text-align:center;
     background: ${cardColor};
     height: 20%;
