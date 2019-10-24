@@ -30,10 +30,11 @@ const PrisonCard = props => {
 
     return(
     <CardContainer>
-       <ItemContainer>
-        <img src ={props.value.image}/>
-        <h2>{props.value.name}</h2>
-        <p>{props.value.species}</p>
+       <ItemContainer id ={props.candidate.id}>
+        {/* <img src ={props.value.image}/> */}
+        <h2>{props.candidate.name}</h2>
+        <p>{props.candidate.primary_skill}</p>
+        <p>{props.candidate.age}</p>
         <button onClick={() => deleteCandidate(props.candidate.id)}>Delete Candidate</button>
        </ItemContainer>
     </CardContainer>
