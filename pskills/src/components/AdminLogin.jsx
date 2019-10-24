@@ -29,27 +29,22 @@ const Form = styled.form `
     height: 30vh;
     text-align:center;
 `
-
 const Input = styled.input `
     margin: 20px 10px;
 `
-
 const H2 = styled.h2 `
     text-align:center;
     margin: 30px 0 40px
 `
 
 function AdminLogin(props) {
-
 const dispatch = useDispatch()
-
 const [user, setUser] =useState({
     username: '',
     password: ''
 
 })
  
-
 const onInputChange = e => 
    setUser({...user, [e.target.name]: e.target.value});
    
@@ -78,18 +73,7 @@ return(
         </Form>
 </Page>
  )
-
 }
-
-
-// const mapStateToProps = (state) => {
-//     return {
-//         user: state.user,
-//         loading: state.loading,
-//         error: state.error
-//     };
-// };
 
 export default AdminLogin
 
-// connect(mapStateToProps, {adminLogin})(AdminLogin)

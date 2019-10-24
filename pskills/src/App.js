@@ -31,11 +31,12 @@ function App() {
             <Route path="/admin-login" component={AdminLogin} />
             <Route path="/client-providers" component={ClientProviders} />
             <Route path="/client-main/:provider" component={ClientMain} />
-            <Route path="/client-individual/" component={ClientIndividual} />
+            <Route path="/client-individual/:id" component={ClientIndividual} />
             <PrivateRoute path="/admin-providers" component={AdminProviders} />
             <PrivateRoute path="/admin-main/:provider" component={AdminMain} />
             <PrivateRoute path ="/admin-individual" component ={AdminIndividual}/> 
-            <PrivateRoute path ="/admin-page" component ={AdminPage}/> 
+            
+
           </Switch>
       </Router>
     </AppDiv>
