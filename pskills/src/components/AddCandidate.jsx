@@ -52,7 +52,6 @@ font-weight: bold;
 
 `
 
-=======
 const initialCandidate ={
     id: '',
     first_name: '',
@@ -93,7 +92,7 @@ const AddCandidate = props => {
 
            <FormStyle  onClick={() => confirmEdit(candidateInfo)} >
               <label htmlFor = 'name'>Name</label>
-
+            </FormStyle>
               <InputStyle 
               name ='name'
               type ='text'
