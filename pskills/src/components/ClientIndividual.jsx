@@ -40,13 +40,14 @@ if (placeOne != undefined){
     return (
         <div>
             {newEmployee.map(person => {
-                console.log(person.primary_skill)
+                console.log(person.img)
                 return (
                     <Cards>
                         <ClientCard
                             name={person.name}
                             age={person.age}
-                            skills={person.primary_skill} />
+                            skills={person.primary_skill}
+                            image={person.src} />
                     </Cards>
                 );
             })}
