@@ -10,8 +10,8 @@ export const LOAD_FAILURE ='LOAD_FAILURE';
 export const fetchData = () => (dispatch) => {
     dispatch({type: LOAD_DATA })
     axios
-    .get('https://rickandmortyapi.com/api/location')
-        .then(res => dispatch({ type: LOAD_SUCCESS, payload: res.data.results}))
+    .get(' http://localhost:3333/providers')
+        .then(res => dispatch({ type: LOAD_SUCCESS, payload: res.data}))
         .catch(err => dispatch({ type: LOAD_FAILURE, payload: err.response}))
 }
 
@@ -23,7 +23,9 @@ export const adminLogin = (user) => (dispatch) => {
     dispatch({type: START_LOGIN})
     axiosWithLoginAuth()
     .post('', user) 
-        .then(res => dispatch({type: LOGIN_SUCCESS, payload: res.data}))
+        .then(res => { dispatch({type: LOGIN_SUCCESS, payload: res.data})
+        localStorage.setItem('token', res.data.payload)
+    })
         .catch(err => dispatch({ type: LOGIN_FAILURE, payload: err.response}))
 }
 

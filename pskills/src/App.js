@@ -34,6 +34,7 @@ function App() {
             <Route path="/admin-providers" component={AdminProviders} />
             <Route path="/admin-main/:provider" component={AdminMain} />
             <Route path ="/admin-individual" component ={AdminIndividual}/> 
+
           </Switch>
       </Router>
     </AppDiv>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import {adminEdit} from '../actions/index';
 
 
 
@@ -51,22 +52,37 @@ font-weight: bold;
 
 `
 
+=======
+const initialCandidate ={
+    id: '',
+    first_name: '',
+    last_name: ''
+}
 
 const AddCandidate = props => {
-    const [candidate, setCandidate] = useState([{
-        name: '' ,
-        species: ''
-    }])
+
+    const [editing, setEditing] = useState(false);
+    const [candidateToEdit, setCandidateToEdit] = useState(initialCandidate);
+    const [candidateInfo, setCandidateInfo] = useState(initialCandidate)
+
+    const editCandidate = candidate => {
+        setEditing(true);
+        setCandidateToEdit(candidateInfo);
+      };
    
+      const confirmEdit = e => {
+          e.preventDefault();
+          adminEdit()
+      }
 
   const submitForm = e => {
       e.preventDefault();
-      props.addCandidate(candidate);
-      setCandidate([{name: '', species: ''}]) 
+      props.editCandidate(candidateInfo);
+      setCandidateInfo([{name: '', species: ''}]) 
   }
 
     const changeHandler = e => {
-        setCandidate({...candidate, [e.target.name]: e.target.value})
+        setCandidateToEdit({...candidateToEdit, [e.target.name]: e.target.value})
     }
     
     return(
@@ -74,6 +90,10 @@ const AddCandidate = props => {
           <HeaderStyle>Add a Candidate</HeaderStyle>
            <FormStyle onSubmit ={submitForm} >
               <LabelStyle htmlFor = 'name'>Name</LabelStyle>
+
+           <FormStyle  onClick={() => confirmEdit(candidateInfo)} >
+              <label htmlFor = 'name'>Name</label>
+
               <InputStyle 
               name ='name'
               type ='text'
@@ -88,7 +108,8 @@ const AddCandidate = props => {
                   id ='species'
                   placeholder ='Enter Species' 
                   onChange={changeHandler}/>
-              <ButtonStyle type='submit'>Add Candidate</ButtonStyle>
+         
+              <button type='submit'>Confirm Changes</button>
           </FormStyle>
       </div>
      ) 
