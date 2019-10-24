@@ -74,7 +74,7 @@ const AdminMain = (props) => {
     };
 
 
-    const thisId = props.match.params.provider - 1
+    const thisId = props.match.params.provider 
 
     useEffect(() => {
         props.fetchData();
@@ -143,34 +143,17 @@ const AdminMain = (props) => {
             </Form>}
             <Button onClick={click}>{!display && "Add Canidate" || 'Hide' }</Button>
             <MainDisplay>
-                {props.error && <p>{props.error}</p>}
-                <>
-                    <Card onClick={() => props.history.push(`/admin-individual/${location.id}`)}>
-                        <p>{location.name}</p>
-                        <p>{location.type}</p>
-                        <p>{location.dimension}</p>
-                    </Card>
-                    <Card>
-                        <p>{location.name}</p>
-                        <p>{location.type}</p>
-                        <p>{location.dimension}</p>
-                    </Card>
-                    <Card>
-                        <p>{location.name}</p>
-                        <p>{location.type}</p>
-                        <p>{location.dimension}</p>
-                    </Card>
-                    <Card>
-                        <p>{location.name}</p>
-                        <p>{location.type}</p>
-                        <p>{location.dimension}</p>
-                    </Card>
-                    {displayTwo && <Card >
-                        <p>Name:{employee.name}</p>
-                        <p>Location:{employee.location}</p>
-                        <p>Skills: {employee.skills}</p>
-                    </Card>}                
-                </> 
+            {props.error && <p>{props.error}</p>}
+                        <>
+                        {props.jobData[thisId].candidates.map(data => (
+                                <Card onClick={() => props.history.push(`/admin-individual/${location.id}${data.id}`)}>
+                                    <p>{data.name}</p>
+                                    <p>{data.age}</p>
+                                </Card>
+                            ))}
+                                
+                        </>
+            
                 </MainDisplay>
         </>
     );
