@@ -25,9 +25,8 @@ export default function ClientCard(props) {
           <div>
             <h2>{props.name}</h2>
             <div>
-            <p>Location: {props.location.name}</p>
                 <p> Skills: {props.skills}</p>
-              <p>Bio: {props.bio}</p>
+              <p>Age: {props.age}</p>
             </div>
         </div>
       </Card>
