@@ -12,11 +12,11 @@ const initialState = {
             }
         ],
 
-        candidate: [
+        candidates: [
             {
-                first_name: '',
-                last_initial: '',
-                primary_skill: '',
+                name: '',
+                age: '',
+                skill: '',
                 provider_id: ''
             }
         ]

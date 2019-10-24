@@ -14,6 +14,7 @@ import ClientIndividual from './components/ClientIndividual';
 import AdminRegister from './components/AdminRegister';
 import styled from "styled-components";
 import { backgroundColor } from './Styling';
+import AdminPage from './components/AdminPage';
 
 const AppDiv = styled.div `
 background:${backgroundColor};
@@ -30,11 +31,11 @@ function App() {
             <Route path="/admin-login" component={AdminLogin} />
             <Route path="/client-providers" component={ClientProviders} />
             <Route path="/client-main/:provider" component={ClientMain} />
-            <Route path="/client-individual/:id" component={ClientIndividual} />
-            <Route path="/admin-providers" component={AdminProviders} />
-            <Route path="/admin-main/:provider" component={AdminMain} />
-            <Route path ="/admin-individual" component ={AdminIndividual}/> 
-
+            <Route path="/client-individual/" component={ClientIndividual} />
+            <PrivateRoute path="/admin-providers" component={AdminProviders} />
+            <PrivateRoute path="/admin-main/:provider" component={AdminMain} />
+            <PrivateRoute path ="/admin-individual" component ={AdminIndividual}/> 
+            <PrivateRoute path ="/admin-page" component ={AdminPage}/> 
           </Switch>
       </Router>
     </AppDiv>

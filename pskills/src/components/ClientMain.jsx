@@ -4,7 +4,9 @@ import {fetchData} from '../actions/index';
 import '../App.css'
 import styled from "styled-components";
 import { backgroundColor, cardColor, mainFont } from '../Styling';
+import {Link} from "react-router-dom";
 import ClientIndividual from './ClientIndividual'
+
 const H1 = styled.h1 `
 
 `
@@ -15,11 +17,11 @@ const MainDisplay = styled.div `
     display:flex;
 `
 
-const Card = styled.div `
+const CardLink = styled(Link) `
     text-align:center;
     background: ${cardColor};
     height: 20%;
-    width: 20%;
+    width: 30%;
     border-radius:10px;
     margin: 3%;
     border:1px solid black;
@@ -36,7 +38,7 @@ const initialLocation = {
     residents: [],
   };
 
-  
+
 
 const ClientMain = (props) => {
     const [location, setLocation] = useState(initialLocation)
@@ -71,7 +73,7 @@ const ClientMain = (props) => {
     console.log(props.jobData)
     console.log(props.jobData[thisId])
     console.log(props.location.key)
-    console.log(props.id)
+    console.log(props)
     console.log(props.match.params.provider)
 
     if(props.loading) {
@@ -89,6 +91,7 @@ const ClientMain = (props) => {
                     {props.error && <p>{props.error}</p>}
                         <>
                         {props.jobData[thisId].candidates.map(data => (
+
                                 <Card onClick={() => props.history.push(`/client-individual/${location.id}${data.id}`)}>
                                     <p>{data.name}</p>
                                     <p>{data.age}</p>
