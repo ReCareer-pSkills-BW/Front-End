@@ -6,18 +6,16 @@ import styled from 'styled-components';
 
 
 export default function ClientIndividual(props) {
+    const [employee, setEmployee] = useState([])
 
     const [employee, setEmployee] = useState([])
     const [id, setID] = useState(props)
     const [secondId, setSecondId] = useState(props)
-    console.log(id.match.params.id)
-    console.log(secondId)
-
+   
     const Cards = styled.div`
     display: flex;
     justify-content: center;
     `
-
     // need to get specific ID
     const get = 'http://localhost:3333/providers/'
     

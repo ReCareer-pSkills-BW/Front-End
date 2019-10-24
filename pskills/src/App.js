@@ -14,6 +14,7 @@ import ClientIndividual from './components/ClientIndividual';
 import AdminRegister from './components/AdminRegister';
 import styled from "styled-components";
 import { backgroundColor } from './Styling';
+import AdminPage from './components/AdminPage';
 
 const AppDiv = styled.div `
 background:${backgroundColor};
@@ -35,6 +36,7 @@ function App() {
             <PrivateRoute path="/admin-main/:provider" component={AdminMain} />
             <PrivateRoute path ="/admin-individual" component ={AdminIndividual}/> 
             
+
           </Switch>
       </Router>
     </AppDiv>

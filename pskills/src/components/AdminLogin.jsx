@@ -7,6 +7,7 @@ import { backgroundColor } from '../Styling';
 import {adminLogin} from '../actions/index';
 import {axiosWithLoginAuth} from '../utils/axiosWithLoginAuth';
 
+
 const NavStyle = styled(NavLink)`
   padding: 0.2rem 1.2rem;
   background: #333;
@@ -35,11 +36,13 @@ const H2 = styled.h2 `
     text-align:center;
     margin: 30px 0 40px
 `
+
 function AdminLogin(props) {
 const dispatch = useDispatch()
 const [user, setUser] =useState({
     username: '',
     password: ''
+
 })
  
 const onInputChange = e => 
@@ -71,4 +74,6 @@ return(
 </Page>
  )
 }
+
 export default AdminLogin
+

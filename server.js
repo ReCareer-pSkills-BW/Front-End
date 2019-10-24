@@ -123,7 +123,7 @@ let user = [
     password: 'admin'
   }
 ]
-server.get('/candidates', (req, res) => {
+server.get('/providers/candidates', (req, res) => {
   res.json(candidate);
 });
 let candidateId = candidate.length;
@@ -132,11 +132,10 @@ server.get('/providers', (req, res) => {
   res.json(providers);
 
 });
-let providersId = providers.length;
 
-server.post('/candidate', (req, res) => {
+server.post('/providers/candidates', (req, res) => {
   const { name, age, primary_skill } = req.body;
-  const newCandidate = { name, age, height, id: candidateId };
+  const newCandidate = { name, age, primary_skill, id: candidateId };
   if (!name || !age || !primary_skill) {
     return sendUserError(
       'Ya gone did oofed! Name/Age/skill are all required to create a candidate in the DB.',
@@ -158,7 +157,7 @@ server.post('/candidate', (req, res) => {
   res.json(candidate);
 });
 
-server.put('/candidate/:id', (req, res) => {
+server.put('/providers/candidates/:id', (req, res) => {
   const { id } = req.params;
   const { name, age, primary_skill } = req.body;
   const findCandidateById = candidate => {
@@ -175,23 +174,17 @@ server.put('/candidate/:id', (req, res) => {
   }
 });
 
-server.delete('/candidate/:id', (req, res) => {
-  const { id } = req.params;
-  const foundCandidate = candidate.find(candidate => candidate.id == id);
-
-  if (foundCandidate) {
-    const CandidateRemoved = { ...foundCandidate };
-    candidate = candidate.filter(candidate => candidate.id != id);
-    res.status(200).json(candidate);
-  } else {
-    sendUserError('No candidate by that ID exists in the DB', res);
-  }
+server.delete('/providers/candidates/:id', (req, res) => {
+  // if (!req.params.id)
+  //   res.status(400).send("Your request is missing the id");
+  // candidates = candidates.filter(candidates=> `${candidate.id}` !== req.params.id);
+  // res.status(202).send(req.params.id);
 });
+
 
 server.post("/login", (req, res) => {
   const { username, password } = req.body;
   if (username === "admin" && password === "admin") {
-    req.loggedIn = true;
     setTimeout(() => {
       res.status(200).json({
         payload: token

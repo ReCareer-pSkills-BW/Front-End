@@ -5,6 +5,7 @@ import '../App.css'
 import styled from "styled-components";
 import { backgroundColor, cardColor, mainFont } from '../Styling';
 import { adminAddCandidate } from '../actions/index';
+import { adminDel } from '../actions/index';
 
 
 const H1 = styled.h1`
@@ -17,7 +18,7 @@ const MainDisplay = styled.div`
     display:flex;
 `
 
-const Card = styled.div`
+const CardLink = styled.div`
     text-align:center;
     background: ${cardColor};
     height: 20%;
@@ -143,33 +144,16 @@ const AdminMain = (props) => {
             </Form>}
             <Button onClick={click}>{!display && "Add Canidate" || 'Hide' }</Button>
             <MainDisplay>
-                {props.error && <p>{props.error}</p>}
+                {/* {props.error && <p>{props.error}</p>} */}
                 <>
-                    <Card onClick={() => props.history.push(`/admin-individual/${location.id}`)}>
-                        <p>{location.name}</p>
-                        <p>{location.type}</p>
-                        <p>{location.dimension}</p>
-                    </Card>
-                    <Card>
-                        <p>{location.name}</p>
-                        <p>{location.type}</p>
-                        <p>{location.dimension}</p>
-                    </Card>
-                    <Card>
-                        <p>{location.name}</p>
-                        <p>{location.type}</p>
-                        <p>{location.dimension}</p>
-                    </Card>
-                    <Card>
-                        <p>{location.name}</p>
-                        <p>{location.type}</p>
-                        <p>{location.dimension}</p>
-                    </Card>
-                    {displayTwo && <Card >
-                        <p>Name:{employee.name}</p>
-                        <p>Location:{employee.location}</p>
-                        <p>Skills: {employee.skills}</p>
-                    </Card>}                
+                    {props.jobData[thisId].candidates.map(data => (
+                        <CardLink to={`/client-individual/${data.id}`}>
+                            <p>{data.name}</p>
+                            <p>{data.age}</p>
+                            <button onClick={() => dispatch(adminDel(data.id))}>Delete</button>
+                        </CardLink>
+                    
+                            ))}
                 </> 
                 </MainDisplay>
         </>
@@ -187,4 +171,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, { fetchData })(AdminMain)
+export default connect(mapStateToProps, {fetchData})(AdminMain)
