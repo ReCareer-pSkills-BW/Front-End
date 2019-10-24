@@ -147,10 +147,9 @@ const AdminMain = (props) => {
             <MainDisplay>
             {props.error && <p>{props.error}</p>}
                         <>
-                        {props.jobData[thisId].candidates.map(data => (
+                        {[props.jobData[thisId]].map(data => (
                                 <Card onClick={() => props.history.push(`/admin-individual/${location.id}${data.id}`)}>
                                     <p>{data.name}</p>
-                                    <p>{data.age}</p>
                                 </Card>
                             ))}
                                 

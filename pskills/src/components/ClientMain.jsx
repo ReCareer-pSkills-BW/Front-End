@@ -43,39 +43,28 @@ const initialLocation = {
 const ClientMain = (props) => {
     const [location, setLocation] = useState(initialLocation)
 
-    const thisId = props.match.params.provider 
+    const thisId = props.match.params.provider - 1
 
     useEffect (() => {
         
-        props.fetchData();
-        // function compare(a, b) {
-        //     const nameA = a.name.toUpperCase();
-        //     const nameB = b.name.toUpperCase();
-          
-        //     let comparison = 0;
-        //     if (nameA > nameB) {
-        //       comparison = 1;
-        //     } else if (nameA < nameB) {
-        //       comparison = -1;
-        //     }
-        //     return comparison;
-        //   }
-        //   props.jobData.sort(compare);
+        props.fetchData()
+ 
         setLocation(props.jobData[thisId]);
         const thisLocation = props.jobData.find(
             location => `${location}` === props.jobData[thisId]
-        );    console.log(location)
+        );    
 
         if (thisLocation) setLocation(thisLocation);
 
     }, [])
-
+console.log(location)
     console.log(props.jobData)
     console.log(props.jobData[thisId])
     console.log(props.location.key)
     console.log(props)
     console.log(props.match.params.provider)
-
+    const here = [props.jobData[thisId]]
+    console.log(here)
     if(props.loading) {
         
         return <h3>Loading Data...</h3>
@@ -90,11 +79,12 @@ const ClientMain = (props) => {
                     
                     {props.error && <p>{props.error}</p>}
                         <>
-                        {props.jobData[thisId].candidates.map(data => (
+                        {here.map(data => (
 
                                 <Card onClick={() => props.history.push(`/client-individual/${location.id}${data.id}`)}>
-                                    <p>{data.name}</p>
-                                    <p>{data.age}</p>
+                                        <p>{data.name}</p>
+                                        <p>{data.type}</p>
+                                        <p>{data.dimension}</p>
                                 </Card>
                             ))}
                                 
