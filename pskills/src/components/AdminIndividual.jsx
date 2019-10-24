@@ -2,26 +2,30 @@ import React,{useState, useEffect} from 'react'
 import axios from 'axios'
 import PrisonCard from './PrisonCard'
 import AddCandidate from './AddCandidate'
-import {NavLink} from 'react-router-dom'
 
 
-function PrisonList() {
+
+function PrisonList(props) {
 const [prison, setPrisonList] = useState([])    
 const [statePen, setStatePen] = useState([])
 const [countyJail, setCountyJail] =useState([])
 const [federalFacilty, setFederalFacility] = useState([])
-const backUp = 'https://rickandmortyapi.com/api/character/'
+ 
+
  
     useEffect(() =>{
         const getPrisons = () => {
          axios.get('http://localhost:3333/providers')
           .then( res => {
               //setPrisonList(res.data.results);
+              console.log(res);
               const statePenCandidates = res.data[0].candidates
               const countyJailCandidates = res.data[1].candidates
-              console.log(statePenCandidates);
+              const federalFacilityCandidates = res.data[2].candidates
+              console.log(federalFacilityCandidates);
               setStatePen(statePenCandidates);
               setCountyJail(countyJailCandidates);
+              setFederalFacility(federalFacilityCandidates);
               
           })
          .catch(err => {
@@ -36,14 +40,41 @@ const backUp = 'https://rickandmortyapi.com/api/character/'
     return (
         <div>
      {/* <AddCandidate editCandidate ={editCandidate}/>  */}
-           {countyJail.map(value => (
-               <NavLink to = {`/admin-individual/${value.id}`}>
-               <PrisonCard candidate ={value} id ={value.id}/>
-               </NavLink>
-           ))}
-        {statePen.map(value => (
-            <PrisonCard candidate ={value} id ={value.id}/>
-        ))}
+          
+        {statePen.map(value => {
+            if(props.match.params.candidateID === '00' && value.id === 0) {
+               return <PrisonCard candidate ={value} id ={value.id}/>
+            } else if(props.match.params.candidateID === '01' && value.id ===1){
+                return <PrisonCard candidate ={value} id ={value.id}/>
+            }
+            if(props.match.params.candidateID === '02' && value.id === 2){
+                return <PrisonCard candidate ={value} id ={value.id}/>
+            }
+        })}
+
+        {countyJail.map(value => {
+            if(props.match.params.candidateID === '10' && value.id === 0) {
+                return <PrisonCard candidate ={value} id ={value.id}/>
+            } else if(props.match.params.candidateID === '11' && value.id === 1){
+                return <PrisonCard candidate ={value} id ={value.id}/>
+            }
+            if(props.match.params.candidateID === '12' && value.id ===2){
+                return <PrisonCard candidate ={value} id ={value.id}/>
+            }
+        })}
+
+        {federalFacilty.map(value => {
+            if(props.match.params.candidateID === '20' && value.id === 0){
+                return <PrisonCard candidate ={value} id ={value.id}/>
+            } else if(props.match.params.candidateID ==='21'&& value.id === 1){
+                return <PrisonCard candidate ={value} id ={value.id}/>
+            }
+            if(props.match.params.candidateID === '22' && value.id === 2) {
+                return <PrisonCard candidate ={value} id ={value.id}/>
+            }
+        })}
+
+
 
       
         
