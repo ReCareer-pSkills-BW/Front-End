@@ -119,7 +119,7 @@ export default function Home() {
                     </Card>
 
                     <Card>
-                        <img src="https://rickandmortyapi.com/api/character/avatar/1.jpeg" />
+                        <Pic src={require('../photo-1544098485-2a2ed6da40ba.jpg')}/>
                         <Information>
                             <Names> Ricky</Names>
                             <h3> New York City, New York</h3>
