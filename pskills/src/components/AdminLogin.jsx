@@ -1,12 +1,11 @@
-import React,{useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {NavLink} from 'react-router-dom'
 import styled from 'styled-components'
 import {connect, useDispatch} from 'react-redux';
 import {adminReg} from '../actions/index';
 import { backgroundColor } from '../Styling';
 import {adminLogin} from '../actions/index';
-
-
+import {axiosWithLoginAuth} from '../utils/axiosWithLoginAuth';
 
 const NavStyle = styled(NavLink)`
   padding: 0.2rem 1.2rem;
@@ -29,36 +28,37 @@ const Form = styled.form `
     height: 30vh;
     text-align:center;
 `
-
 const Input = styled.input `
     margin: 20px 10px;
 `
-
 const H2 = styled.h2 `
     text-align:center;
     margin: 30px 0 40px
 `
-
-function AdminLogin() {
-
+function AdminLogin(props) {
 const dispatch = useDispatch()
-
-const [admin, setAdmin] =useState({
-    userName: '',
-    passWord: ''
-
+const [user, setUser] =useState({
+    username: '',
+    password: ''
 })
  
-
 const onInputChange = e => 
-   setAdmin({...admin, [e.target.name]: e.target.value});
+   setUser({...user, [e.target.name]: e.target.value});
    
-  
-
+   const handleSubmit = (e) => {
+        e.preventDefault();
+        axiosWithLoginAuth()
+        .post(`/login`, user)
+        .then(result => {
+            console.log(result)
+            localStorage.setItem("token", result.data.payload);    
+           props.history.push("/admin-providers");
+    })
+   }
  
 return(
     <Page>
-        <Form>
+        <Form onSubmit={handleSubmit}>
             <H2>Admin Login</H2>
             <label>Enter a Username: </label>
             <Input type="text" name="username" onChange={onInputChange}/> 
@@ -66,20 +66,9 @@ return(
             <label>Enter a Password: </label>
             <Input name ="password" type="password" onChange={onInputChange}/> 
             <br/>
-            <NavStyle to ='/admin-providers' onClick={() => dispatch(adminLogin())}>Login</NavStyle>
+            <button>Login</button>
         </Form>
 </Page>
  )
-
 }
-
-
-const mapStateToProps = (state) => {
-    return {
-        user: state.user,
-        loading: state.loading,
-        error: state.error
-    };
-};
-
-export default connect(mapStateToProps, {adminLogin})(AdminLogin)
+export default AdminLogin

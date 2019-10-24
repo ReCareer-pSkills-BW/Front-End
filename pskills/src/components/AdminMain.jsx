@@ -74,7 +74,7 @@ const AdminMain = (props) => {
     };
 
 
-    const thisId = props.match.params.provider - 1
+    const thisId = props.match.params.provider
 
     useEffect(() => {
         props.fetchData();
