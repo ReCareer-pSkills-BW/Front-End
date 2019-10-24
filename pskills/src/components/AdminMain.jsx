@@ -5,6 +5,7 @@ import '../App.css'
 import styled from "styled-components";
 import { backgroundColor, cardColor, mainFont } from '../Styling';
 import { adminAddCandidate } from '../actions/index';
+import { adminDel } from '../actions/index';
 
 
 const H1 = styled.h1`
@@ -17,7 +18,7 @@ const MainDisplay = styled.div`
     display:flex;
 `
 
-const Card = styled.div`
+const CardLink = styled.div`
     text-align:center;
     background: ${cardColor};
     height: 20%;
@@ -75,6 +76,7 @@ const AdminMain = (props) => {
 
 
     const thisId = props.match.params.provider 
+
 
     useEffect(() => {
         props.fetchData();
@@ -153,7 +155,7 @@ const AdminMain = (props) => {
                             ))}
                                 
                         </>
-            
+
                 </MainDisplay>
         </>
     );
@@ -170,4 +172,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, { fetchData })(AdminMain)
+export default connect(mapStateToProps, {fetchData})(AdminMain)

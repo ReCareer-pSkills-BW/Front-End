@@ -67,7 +67,9 @@ const AboutOneDisplay = styled.p`
     to   { opacity: 1; }
 }
 `
-
+const Pic= styled.img`
+width: 50%;
+`
 export default function Home() {
 
     const [display, setDisplay] = useState(false);
@@ -104,7 +106,7 @@ export default function Home() {
                 <Body>
                     <h1>Success Stories</h1>
                     <Card>
-                        <img src="https://rickandmortyapi.com/api/character/avatar/1.jpeg" />
+                        <Pic src={require('../photo-1547425260-76bcadfb4f2c.jpg')}/>
                         <Information>
                             <Names> Rick</Names>
                             <h3> Atlanta, Georgia</h3>
@@ -117,7 +119,7 @@ export default function Home() {
                     </Card>
 
                     <Card>
-                        <img src="https://rickandmortyapi.com/api/character/avatar/1.jpeg" />
+                        <Pic src={require('../photo-1544098485-2a2ed6da40ba.jpg')}/>
                         <Information>
                             <Names> Ricky</Names>
                             <h3> New York City, New York</h3>
