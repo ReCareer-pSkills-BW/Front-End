@@ -4,7 +4,7 @@ import {fetchData} from '../actions/index';
 import '../App.css'
 import styled from "styled-components";
 import { backgroundColor, cardColor, mainFont } from '../Styling';
-
+import ClientIndividual from './ClientIndividual'
 const H1 = styled.h1 `
 
 `
@@ -37,8 +37,8 @@ const initialLocation = {
   };
 
   
-let props = {}
-const ClientMain = (props) => { 
+
+const ClientMain = (props) => {
     const [location, setLocation] = useState(initialLocation)
 
     const thisId = props.match.params.provider 
@@ -78,7 +78,7 @@ const ClientMain = (props) => {
         
         return <h3>Loading Data...</h3>
     }
-    if(location == undefined) {
+    if(props.jobData[thisId] == undefined || location == undefined) {
         return <h3>Please go back and choose a prison...</h3>
     }
         return (
@@ -89,7 +89,7 @@ const ClientMain = (props) => {
                     {props.error && <p>{props.error}</p>}
                         <>
                         {props.jobData[thisId].candidates.map(data => (
-                                <Card onClick={() => props.history.push(`/client-individual/${location.id}`)}>
+                                <Card onClick={() => props.history.push(`/client-individual/${location.id}${data.id}`)}>
                                     <p>{data.name}</p>
                                     <p>{data.age}</p>
                                 </Card>
