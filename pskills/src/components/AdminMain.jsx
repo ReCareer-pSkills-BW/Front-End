@@ -75,7 +75,8 @@ const AdminMain = (props) => {
     };
 
 
-    const thisId = props.match.params.provider
+    const thisId = props.match.params.provider 
+
 
     useEffect(() => {
         props.fetchData();
@@ -144,17 +145,17 @@ const AdminMain = (props) => {
             </Form>}
             <Button onClick={click}>{!display && "Add Canidate" || 'Hide' }</Button>
             <MainDisplay>
-                {/* {props.error && <p>{props.error}</p>} */}
-                <>
-                    {props.jobData[thisId].candidates.map(data => (
-                        <CardLink to={`/client-individual/${data.id}`}>
-                            <p>{data.name}</p>
-                            <p>{data.age}</p>
-                            <button onClick={() => dispatch(adminDel(data.id))}>Delete</button>
-                        </CardLink>
-                    
+            {props.error && <p>{props.error}</p>}
+                        <>
+                        {props.jobData[thisId].candidates.map(data => (
+                                <Card onClick={() => props.history.push(`/admin-individual/${location.id}${data.id}`)}>
+                                    <p>{data.name}</p>
+                                    <p>{data.age}</p>
+                                </Card>
                             ))}
-                </> 
+                                
+                        </>
+
                 </MainDisplay>
         </>
     );

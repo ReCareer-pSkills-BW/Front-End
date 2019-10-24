@@ -32,10 +32,10 @@ function App() {
             <Route path="/client-providers" component={ClientProviders} />
             <Route path="/client-main/:provider" component={ClientMain} />
             <Route path="/client-individual/:id" component={ClientIndividual} />
-            <PrivateRoute path="/admin-providers" component={AdminProviders} />
-            <PrivateRoute path="/admin-main/:provider" component={AdminMain} />
-            <PrivateRoute path ="/admin-individual" component ={AdminIndividual}/> 
-            
+            <Route path="/admin-providers" component={AdminProviders} />
+            <Route path="/admin-main/:provider" component={AdminMain} />
+            <Route path ="/admin-individual/:candidateID" component ={AdminIndividual}/> 
+
 
           </Switch>
       </Router>
