@@ -77,14 +77,14 @@ const AdminMain = (props) => {
 
     const thisId = props.match.params.provider - 1
 
-    useEffect(() => {
-        props.fetchData();
-        setLocation(props.jobData[thisId]);
-        const thisLocation = props.jobData.find(
-            location => `${location}` === props.jobData[thisId]
-        );
-        if (thisLocation) setLocation(thisLocation);
-    }, [])
+    // useEffect(() => {
+    //     props.fetchData();
+    //     setLocation(props.jobData[thisId]);
+    //     const thisLocation = props.jobData.find(
+    //         location => `${location}` === props.jobData[thisId]
+    //     );
+    //     if (thisLocation) setLocation(thisLocation);
+    // }, [])
 
     console.log(props.jobData[thisId])
 
@@ -146,14 +146,15 @@ const AdminMain = (props) => {
             <MainDisplay>
                 {/* {props.error && <p>{props.error}</p>} */}
                 <>
-                    {props.jobData[thisId].candidates.map(data => (
+                <h4>{props.jobData[thisId].id}</h4>
+                    {/* {props.jobData[thisId].candidates.map(data => (
                         <CardLink to={`/client-individual/${data.id}`}>
                             <p>{data.name}</p>
                             <p>{data.age}</p>
                             <button onClick={() => dispatch(adminDel(data.id))}>Delete</button>
                         </CardLink>
                     
-                            ))}
+                            ))} */}
                 </> 
                 </MainDisplay>
         </>

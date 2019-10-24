@@ -65,17 +65,13 @@ const AdminProviders = (props) => {
 
     return (
 
-        <Providers>
-            <h1>Provider Locations</h1>
-            <ClientCard>
-                {props.jobData.map(data => (
-                    <H4 onClick={() => props.history.push(`/admin-main/${data.id}`)}>{data.name}</H4>
-                ))} 
-            </ClientCard>
-
-         
-        </Providers>                     
-         
+        Object.values(props.jobData).map((institution) => {
+            console.log(institution)
+            return (
+                <p onClick={() => props.history.push(`/client-main/${institution.id}`)}>Institution: {institution.institution}</p>
+            )
+        })
+//     </ClientC
         )
 }
 

@@ -8,7 +8,6 @@ import styled from 'styled-components';
 export default function ClientIndividual(props) {
     const [employee, setEmployee] = useState([])
 
-    const [employee, setEmployee] = useState([])
     const [id, setID] = useState(props)
     const [secondId, setSecondId] = useState(props)
    

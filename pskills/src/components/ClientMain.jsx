@@ -17,7 +17,7 @@ const MainDisplay = styled.div `
     display:flex;
 `
 
-const CardLink = styled(Link) `
+const Card = styled(Link) `
     text-align:center;
     background: ${cardColor};
     height: 20%;
@@ -43,32 +43,21 @@ const initialLocation = {
 const ClientMain = (props) => {
     const [location, setLocation] = useState(initialLocation)
 
-    const thisId = props.match.params.provider 
+    const thisId = props.match.params.provider -1
 
-    useEffect (() => {
+    // useEffect (() => {
         
-        props.fetchData();
-        // function compare(a, b) {
-        //     const nameA = a.name.toUpperCase();
-        //     const nameB = b.name.toUpperCase();
-          
-        //     let comparison = 0;
-        //     if (nameA > nameB) {
-        //       comparison = 1;
-        //     } else if (nameA < nameB) {
-        //       comparison = -1;
-        //     }
-        //     return comparison;
-        //   }
-        //   props.jobData.sort(compare);
-        setLocation(props.jobData[thisId]);
-        const thisLocation = props.jobData.find(
-            location => `${location}` === props.jobData[thisId]
-        );    console.log(location)
+    //     props.fetchData();
+     
+    
+    //     setLocation(props.jobData[thisId]);
+    //     const thisLocation = props.jobData.find(
+    //         location => `${location}` === props.jobData[thisId]
+    //     );    console.log(location)
 
-        if (thisLocation) setLocation(thisLocation);
+    //     if (thisLocation) setLocation(thisLocation);
 
-    }, [])
+    // }, [])
 
     console.log(props.jobData)
     console.log(props.jobData[thisId])
@@ -87,16 +76,16 @@ const ClientMain = (props) => {
             <>
                 <H1>Data</H1>
                 <MainDisplay>
-                    
+                    <h4>{props.jobData[thisId].id}</h4>
                     {props.error && <p>{props.error}</p>}
                         <>
-                        {props.jobData[thisId].candidates.map(data => (
+                        {/* {props.jobData[thisId].id.map(data => (
 
                                 <Card onClick={() => props.history.push(`/client-individual/${location.id}${data.id}`)}>
-                                    <p>{data.name}</p>
+                                    <p>{data.id}</p>
                                     <p>{data.age}</p>
                                 </Card>
-                            ))}
+                            ))} */}
                                 
                         </>
 

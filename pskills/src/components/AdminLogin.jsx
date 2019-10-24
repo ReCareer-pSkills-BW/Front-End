@@ -81,15 +81,5 @@ return(
 
 }
 
-
-// const mapStateToProps = (state) => {
-//     return {
-//         user: state.user,
-//         loading: state.loading,
-//         error: state.error
-//     };
-// };
-
 export default AdminLogin
 
-// connect(mapStateToProps, {adminLogin})(AdminLogin)

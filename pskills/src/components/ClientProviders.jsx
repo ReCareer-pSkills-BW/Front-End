@@ -69,21 +69,22 @@ const ClientProviders = (props) => {
 
         return (
             
-            <Providers>
-                <h1>Provider Locations</h1>
-                <ClientCard>
-                    {props.jobData.map(data => (
-
-                        console.log(data.id),
-                        <H4 onClick={() => props.history.push(`/client-main/${data.id}`)}>{data.name}</H4>
-                    ))} 
-
-                </ClientCard>
+            // <Providers>
+            //     <h1>Provider Locations</h1>
+            //     <ClientCard>
+                    // {/* {props.jobData.forEach(data => ( */}
+                    Object.values(props.jobData).map((institution) => {
+                        console.log(institution)
+                        return (
+                            <p onClick={() => props.history.push(`/client-main/${institution.id}`)}>Institution: {institution.institution}</p>
+                        )
+                    })
+            //     </ClientCard>
 
              
-            </Providers>                     
+            // </Providers>                     
              
-
+                        
         )
 }
 

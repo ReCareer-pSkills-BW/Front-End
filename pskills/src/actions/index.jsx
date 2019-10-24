@@ -10,8 +10,11 @@ export const LOAD_FAILURE ='LOAD_FAILURE';
 export const fetchData = () => (dispatch) => {
     dispatch({type: LOAD_DATA })
     axios
-    .get(' http://localhost:3333/providers')
-        .then(res => dispatch({ type: LOAD_SUCCESS, payload: res.data}))
+    .get(' https://recareer.herokuapp.com/api/public')
+        .then(res => {
+            dispatch({ type: LOAD_SUCCESS, payload: res.data})
+            console.log(res)
+        })
         .catch(err => dispatch({ type: LOAD_FAILURE, payload: err.response}))
 }
 
