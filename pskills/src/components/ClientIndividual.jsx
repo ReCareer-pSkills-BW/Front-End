@@ -5,14 +5,12 @@ import styled from 'styled-components';
 
 
 
-export default function ClientIndividual() {
+export default function ClientIndividual(props) {
     const [employee, setEmployee] = useState([])
-
     const Cards = styled.div`
     display: flex;
     justify-content: center;
     `
-
     // need to get specific ID
     const get = 'https://rickandmortyapi.com/api/character/' + ""
 

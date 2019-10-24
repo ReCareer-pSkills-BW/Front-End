@@ -19,12 +19,14 @@ export const START_LOGIN = 'START_LOGIN';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 
-export const adminLogin = (user) => (dispatch) => {
+export const adminLogin = (userInfo, history) => (dispatch) => {
     dispatch({type: START_LOGIN})
-    axiosWithLoginAuth()
-    .post('', user) 
-        .then(res => { dispatch({type: LOGIN_SUCCESS, payload: res.data})
-        localStorage.setItem('token', res.data.payload)
+    axios
+    .post('http://localhost:3333/login', userInfo) 
+        .then(res => { 
+            localStorage.setItem('token', res.data.payload)
+            console.log(res.data)
+            dispatch({type: LOGIN_SUCCESS, payload: res.data})
     })
         .catch(err => dispatch({ type: LOGIN_FAILURE, payload: err.response}))
 }
@@ -33,10 +35,10 @@ export const DELETE_DATA = 'DELETE_DATA';
 export const DELETE_SUCCESS = 'DELETE_SUCCESS';
 export const DELETE_FAILURE ='DELETE_FAILURE';
 
-export const adminDel = (candidate) => (dispatch) => {
+export const adminDel = (id) => (dispatch) => {
     dispatch({type: DELETE_DATA})
     axiosWithLoginAuth()
-    .delete('/:id')
+    .delete(`/providers/candidates/${id}`)
         .then(res => dispatch({type: DELETE_SUCCESS, payload: res.data}))
         .catch(err => dispatch({type: DELETE_FAILURE, payload: err.response}))
 }
@@ -60,7 +62,7 @@ export const ADD_FAILURE = 'ADD_FAILURE';
 export const adminAddCandidate = (candidate) => (dispatch) => {
     dispatch({type: ADD_DATA})
     axiosWithLoginAuth()
-    .post('', candidate) 
+    .post('/providers/candidates', candidate) 
         .then(res => dispatch({type: ADD_SUCCESS, payload: res.data}))
         .catch(err => dispatch({ type: ADD_FAILURE, payload: err.response}))
 }

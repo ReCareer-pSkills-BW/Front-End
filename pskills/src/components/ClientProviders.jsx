@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import {fetchData} from '../actions/index';
 import styled from "styled-components";
 import { backgroundColor, cardColor, mainFont } from '../Styling';
+import {Link} from "react-router-dom";
+
 
 const Providers = styled.div `
     background: ${backgroundColor};
@@ -71,8 +73,10 @@ const ClientProviders = (props) => {
                 <h1>Provider Locations</h1>
                 <ClientCard>
                     {props.jobData.map(data => (
-                        <H4 onClick={() => props.history.push(`/client-main/${data.id}`)}>{data.name}</H4>
-                    ))} 
+                        <Link to={`/client-main/${data.id}`}>
+                            <H4 id={data.id}>{data.name}</H4>
+                        </Link>                      
+                        ))} 
                 </ClientCard>
 
              
