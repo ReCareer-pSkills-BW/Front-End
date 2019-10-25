@@ -30,11 +30,16 @@ export default function ClientIndividual(props) {
             });
             console.log(employee)
     }, []);
-
+    const location = (employee.location)
+    let locationTwo = ""
+    if (location)
+    locationTwo = location.name
     return (
         <ClientCard
             name = {employee.name}
             image = {employee.image}
+            species = {employee.species}
+            location= {locationTwo}
         />
     )
 

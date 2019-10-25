@@ -9,14 +9,17 @@ import ClientIndividual from './ClientIndividual';
 import axios from 'axios';
 
 const H1 = styled.h1`
+font-size: 4rem;
+text-align: center;
 
 `
 
 const MainDisplay = styled.div`
     background: ${backgroundColor};
-    height: 100vh;
+    height: 100%;
     display:flex;
     flex-wrap: wrap;
+    justify-content: center;
 `
 
 const Card = styled(Link)`
@@ -63,7 +66,7 @@ const ClientMain = (props) => {
     // }
     return (
         <>
-            <H1>{props.jobData[thisId].institution}</H1>
+            <H1>{props.jobData[thisId].institution} Canidates...</H1>
             <MainDisplay>
 
                 {characters.map(char => {
