@@ -1,19 +1,19 @@
-import React, {useEffect} from 'react';
-import {connect} from 'react-redux';
-import {fetchData} from '../actions/index';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { fetchData } from '../actions/index';
 import styled from "styled-components";
 import { backgroundColor, cardColor, mainFont } from '../Styling';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
-const Providers = styled.div `
+const Providers = styled.div`
     background: ${backgroundColor};
     text-align:center;
     margin-top: 3%;
 
 `
 
-const ClientCard = styled.div `
+const ClientCard = styled.div`
     background: ${cardColor};
     width:30%;
     margin: 3% 35%;
@@ -24,7 +24,7 @@ const ClientCard = styled.div `
         
 `
 
-const H4 = styled.h4 `
+const H4 = styled.h4`
     width:30%;
     margin: 0 35% 4%;
     transition: color 1s;
@@ -40,22 +40,21 @@ const H4 = styled.h4 `
 
 const ClientProviders = (props) => {
 
-    useEffect (() => {
+    useEffect(() => {
         props.fetchData();
         console.log(props.jobData)
     }, [])
 
 
-    if(props.loading) {
-        
+    if (props.loading) {
+
         return <h3>Loading Data...</h3>
     }
     console.log(props.jobData)
-
     // function compare(a, b) {
     //     const nameA = a.name.toUpperCase();
     //     const nameB = b.name.toUpperCase();
-      
+
     //     let comparison = 0;
     //     if (nameA > nameB) {
     //       comparison = 1;
@@ -64,27 +63,37 @@ const ClientProviders = (props) => {
     //     }
     //     return comparison;
     //   }
-      
+
     //   props.jobData.sort(compare);
+    let newClients = [];
+    newClients.push(Object.values(props.jobData))
+    console.log(newClients)
+    if (newClients !==[]){
+    return (
+        Object.values(props.jobData).map((institution) => {
+            console.log(institution)
+            return (
+                <ClientCard onClick={() => props.history.push(`/client-main/${institution.id}`)}>Institution: {institution.institution}</ClientCard>
+            )
+        })
+    )
 
-        return (
-            
-            <Providers>
-                <h1>Provider Locations</h1>
-                <ClientCard>
-                    {props.jobData.map(data => (
+        // <Providers>
+        //     <h1>Provider Locations</h1>
+        //     <ClientCard>
+        //         {props.jobData.map(data => (
 
-                        console.log(data.id),
-                        <H4 onClick={() => props.history.push(`/client-main/${data.id}`)}>{data.name}</H4>
-                    ))} 
+        //             console.log(data.id),
+        //             <H4 onClick={() => props.history.push(`/client-main/${data.id}`)}>{data.name}</H4>
+        //         ))} 
 
-                </ClientCard>
+        //     </ClientCard>
 
-             
-            </Providers>                     
-             
 
-        )
+        // </Providers>                     
+
+
+            }
 }
 
 // React 2 stuff, feel free to check it out
@@ -98,4 +107,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, {fetchData})(ClientProviders)
+export default connect(mapStateToProps, { fetchData })(ClientProviders)

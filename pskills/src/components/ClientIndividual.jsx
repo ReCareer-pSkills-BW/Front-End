@@ -7,15 +7,16 @@ import styled from 'styled-components';
 
 export default function ClientIndividual(props) {
     const [employee, setEmployee] = useState([])
-    const [id, setID] = useState(props)
     const [secondId, setSecondId] = useState(props)
+    console.log(props.match.params.id)
+    const id = props.match.params.id
    
     const Cards = styled.div`
     display: flex;
     justify-content: center;
     `
     // need to get specific ID
-    const get = 'http://localhost:3333/providers/'
+    const get = `https://rickandmortyapi.com/api/character/${id}`
     
     useEffect(() => {
         axios
@@ -29,31 +30,12 @@ export default function ClientIndividual(props) {
             });
             console.log(employee)
     }, []);
-    console.log(employee[0])
-let placeOne = employee[id.match.params.id[0]]
-let newEmployee = []
-if (placeOne != undefined){
-    newEmployee.push(placeOne.candidates[secondId.match.params.id[1]])
-    console.log(newEmployee)
 
-}
     return (
-        <div>
-            {newEmployee.map(person => {
-                console.log(person.img)
-                return (
-                    <Cards>
-                        <ClientCard
-                            name={person.name}
-                            age={person.age}
-                            skills={person.primary_skill}
-                            image={person.src} />
-                    </Cards>
-                );
-            })}
-
-        </div>
-
+        <ClientCard
+            name = {employee.name}
+            image = {employee.image}
+        />
     )
 
 
