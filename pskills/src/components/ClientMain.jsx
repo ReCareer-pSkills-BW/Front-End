@@ -1,23 +1,28 @@
-import React, {useEffect, useState} from 'react';
-import {connect} from 'react-redux';
-import {fetchData} from '../actions/index';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import { fetchData } from '../actions/index';
 import '../App.css'
 import styled from "styled-components";
 import { backgroundColor, cardColor, mainFont } from '../Styling';
-import {Link} from "react-router-dom";
-import ClientIndividual from './ClientIndividual'
+import { Link } from "react-router-dom";
+import ClientIndividual from './ClientIndividual';
+import axios from 'axios';
 
-const H1 = styled.h1 `
+const H1 = styled.h1`
+font-size: 4rem;
+text-align: center;
 
 `
 
-const MainDisplay = styled.div `
+const MainDisplay = styled.div`
     background: ${backgroundColor};
-    height: 100vh;
+    height: 100%;
     display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
 `
 
-const Card = styled(Link) `
+const Card = styled(Link)`
     text-align:center;
     background: ${cardColor};
     height: 20%;
@@ -25,85 +30,60 @@ const Card = styled(Link) `
     border-radius:10px;
     margin: 3%;
     border:1px solid black;
+    font-size: 1.2rem;
     justify-content:space-evenly;
         :hover{
             cursor: pointer;
         }
 `
 
-const initialLocation = {
-    id: '',
-    name: '',
-    type: '',
-    residents: [],
-  };
-
-
 
 const ClientMain = (props) => {
-    const [location, setLocation] = useState(initialLocation)
-
-    const thisId = props.match.params.provider 
-
-    useEffect (() => {
-        
-        props.fetchData();
-        // function compare(a, b) {
-        //     const nameA = a.name.toUpperCase();
-        //     const nameB = b.name.toUpperCase();
-          
-        //     let comparison = 0;
-        //     if (nameA > nameB) {
-        //       comparison = 1;
-        //     } else if (nameA < nameB) {
-        //       comparison = -1;
-        //     }
-        //     return comparison;
-        //   }
-        //   props.jobData.sort(compare);
-        setLocation(props.jobData[thisId]);
-        const thisLocation = props.jobData.find(
-            location => `${location}` === props.jobData[thisId]
-        );    console.log(location)
-
-        if (thisLocation) setLocation(thisLocation);
-
-    }, [])
-
-    console.log(props.jobData)
-    console.log(props.jobData[thisId])
-    console.log(props.location.key)
+    const [location, setLocation] = useState([])
+    const [characters, setCharacters] = useState([]);
+    const thisId = props.match.params.provider
     console.log(props)
-    console.log(props.match.params.provider)
-
-    if(props.loading) {
-        
-        return <h3>Loading Data...</h3>
-    }
-    if(props.jobData[thisId] == undefined || location == undefined) {
-        return <h3>Please go back and choose a prison...</h3>
-    }
-        return (
-            <>
-                <H1>Data</H1>
-                <MainDisplay>
-                    
-                    {props.error && <p>{props.error}</p>}
-                        <>
-                        {props.jobData[thisId].candidates.map(data => (
-
-                                <Card onClick={() => props.history.push(`/client-individual/${location.id}${data.id}`)}>
-                                    <p>{data.name}</p>
-                                    <p>{data.age}</p>
-                                </Card>
-                            ))}
-                                
-                        </>
 
 
-                </MainDisplay>
-            </>
-        );
+    useEffect(() => {
+        axios
+            .get(`https://rickandmortyapi.com/api/character/?page=${thisId[0]}`)
+            .then(response => {
+                console.log(response)
+                setCharacters(response.data.results);
+            })
+            .catch(error => {
+                console.log('error', error)
+            });
+        // TODO: Add API Request here - must run in `useEffect`
+        //  Important: verify the 2nd `useEffect` parameter: the dependancies array!
+    }, []);
+    console.log(characters)
+
+    console.log(props.jobData[thisId])
+    // if(props.jobData[thisId] == undefined || location == undefined) {
+    //     return <h3>Please go back and choose a prison...</h3>
+    // }
+    return (
+        <>
+            <H1>{props.jobData[thisId].institution} Canidates...</H1>
+            <MainDisplay>
+
+                {characters.map(char => {
+                        return (
+                            <Card onClick={() => props.history.push(`/client-individual/${char.id}`)}>
+                                <p>Name: {char.name}</p>
+                                <p>Gender: {char.gender}</p>
+                            </Card>
+                        )
+                    }
+                )
+                }
+
+
+            </MainDisplay>
+        </>
+    );
 }
 
 // React 2 stuff, feel free to check it out
@@ -117,4 +97,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, {fetchData})(ClientMain)
+export default connect(mapStateToProps, { fetchData })(ClientMain)
